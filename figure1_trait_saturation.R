@@ -80,12 +80,20 @@ data_long <- data %>% pivot_longer(
   cols = -c(barcodeID, species, treatment_mmol), names_to = "trait",
   values_to = "value")
 
-# TODO: clean this up, add n numbers for species
-# Use asymptotic / loess curves instead of box plots
-# fix x and y labels
-# Create a small multiple of boxplots for each trait
+# Updated Y-axis labels with units
+label_units <- c(
+  CHL = "CHL (μg/cm²)",
+  dry_whole_g = "AB Dry Weight (g)",
+  LDMC = "LDMC (mg/g)",
+  LMA = "LMA (g/m²)",
+  N = "N Layers"
+)
+
+# Create small multiples of boxplots with updated labels
 ggplot(data_long, aes(x = as.factor(treatment_mmol), y = value, fill = species)) +
-    geom_boxplot() + facet_grid(trait ~ species, scales="free") +
-    scale_fill_manual(values = josef_colors) +
-    custom_theme
+  geom_boxplot() + 
+  facet_grid(trait ~ species, scales = "free", labeller = labeller(trait = label_units)) +
+  scale_fill_manual(values = josef_colors) +
+  custom_theme +
+  labs(x = "Ammoniacal Nitrogen (mM)", y = NULL)
 

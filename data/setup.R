@@ -33,7 +33,7 @@ mass_data$LDMC <- as.numeric(mass_data$LDMC)
 # This line of code initiates a pop-up window.
 # It will take a while to run, that's expected.
 # Afterwards, merge values for image scans with the dataframe.
-scans <- run.ij(set.directory = './scans/raw')
+scans <- run.ij(set.directory = './scans/raw', path.imagej = '/Applications/ImageJ.app')
 names(scans) <- c("barcodeID", "area_cm2")
 mass_data <- merge(mass_data, scans, by = "barcodeID")
 
@@ -48,8 +48,8 @@ mass_data$EWT <- ((mass_data$wet_leaf_g - mass_data$dry_leaf_g) / (mass_data$are
 # Merge Porometer Measurements with Data Afterwards
 #   Source: https://www.licor.com/env/products/LI-600/
 fluor <- read_csv("./fluor/fluor_data.csv") %>%
-  select(c(unique_id, gsw, Fs, `Fm'`, PhiPS2, ETR, Qamb, VPleaf))
-names(fluor) <- c("barcodeID", "gsw", "Fs", "Fm_prime", "Phi_PS2", "ETR", "Qamb", "vpdl")
+  select(c(unique_id, gsw, gtw, gbw, Fs, `Fm'`, PhiPS2, ETR, Qamb, VPleaf))
+names(fluor) <- c("barcodeID", "gsw", "gtw", "gbw", "Fs", "Fm_prime", "Phi_PS2", "ETR", "Qamb", "vpdl")
 
 # Write traits (only those of interest) data to R data file.
 # Also merge measured traits with LI-COR fluorometry data
