@@ -26,15 +26,18 @@ data$species <- factor(data$species, levels=c("R. sativus", "B. officinalis", "H
 data$LDMC <- as.numeric(data$LDMC)
 
 # Define a custom theme for all plots
-custom_theme <- theme_minimal(base_family = "sans") + 
+custom_theme <- theme_classic() +  # Start with a minimal theme
   theme(
-    axis.text = element_text(size = 8),
-    panel.grid.minor = element_blank(),
-    panel.grid.major = element_line(size = 0.25, color = "grey80"),
-    axis.line = element_line(size = 0.5, color = "black"),
-    axis.ticks = element_line(size = 0.5, color = "black"),
-    strip.text = element_text(hjust = 0, size = 10, face = "italic"),
-    legend.position = "none"
+    text = element_text(family = "sans", size = 12),  # Set font family and size
+    axis.title.x = element_text(size = 12),  # Customize x-axis title
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),  # Add margin to y-axis title
+    axis.text = element_text(size = 10),  # Customize axis text
+    legend.text = element_text(size = 11),  # Customize legend text
+    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth=0.2),  # Customize major grid lines
+    panel.grid.minor = element_blank(),  # Remove minor grid lines
+    panel.background = element_rect(fill = "white", color = NA),  # Set panel background
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),  # Center and style the plot title
+    aspect.ratio = 1  # Fix the aspect ratio (1:1)
   )
 
 # Assign factor levels
@@ -52,9 +55,11 @@ josef_colors <- c("R. sativus" = "#299680", "B. officinalis" = "#7570b2", "H. vu
 # Create a new column for aggregated treatment levels
 data <- data %>%
   mutate(treatment_level = case_when(
-    treatment_mmol <= 15 ~ "0 - 15 mmol",
-    treatment_mmol <= 35 ~ "20 - 35 mmol"
+    treatment_mmol <= 35 ~ "0 - 35 mM"
   ))
+
+# Calculate metrics - unit leaf rate, leaf area ratio, leaf weight ratio, plant RGR
+data$GRT <- (data$dry_whole_g / 6 * 7)
 
 # // ------------------------------------------------------------------- //
 # TODO: decide whether log axis transformation is appropriate for PCA
@@ -67,13 +72,13 @@ data <- data %>%
 #     N = log10(N),
 #     ETR = log10(ETR),
 #     CHL = log10(CHL),
-#     dry_whole_g = log10(dry_whole_g)
+#     GRT = log10(GRT)
 #   )
 
 # // ------------------------------------------------------------------- //
 # TODO: Example definition of pca_data (species across treatment levels)
 pca_data <- data %>%
-  select(species, treatment_level, treatment_mmol, CHL, LMA, LDMC, N, area_cm2, dry_whole_g)
+  select(species, treatment_level, treatment_mmol, CHL, LMA, LDMC, area_cm2, GRT)
 
 # Structural trait PCA
 # Split data by species
@@ -89,7 +94,7 @@ for (species_name in names(species_list)) {
   data_subset <- species_list[[species_name]]
   
   # Fit the PCA model
-  pca <- prcomp(data_subset %>% select(CHL, LMA, LDMC, N, area_cm2, dry_whole_g), center = TRUE, scale. = TRUE)
+  pca <- prcomp(data_subset %>% select(CHL, LMA, LDMC, area_cm2, GRT), center = TRUE, scale. = TRUE)
   
   # Store the PCA result
   pca_results[[species_name]] <- pca
@@ -127,7 +132,7 @@ for (treatment_level in names(treatment_list)) {
   data_subset <- treatment_list[[treatment_level]]
   
   # Fit the PCA model
-  pca <- prcomp(data_subset %>% select(CHL, LMA, LDMC, N, area_cm2, dry_whole_g), center = TRUE, scale. = TRUE)
+  pca <- prcomp(data_subset %>% select(CHL, LMA, LDMC, GRT), center = TRUE, scale. = TRUE)
   
   # Store the PCA result
   pca_results[[treatment_level]] <- pca
@@ -177,14 +182,20 @@ for (species in species_list) {
   # Filter data for the current species
   species_data <- data %>%
     filter(species == !!species) %>%
-    select(N, LMA, LDMC, CHL, area_cm2, dry_whole_g) %>%
+    select(N, LMA, LDMC, CHL, GRT, Phi_PS2) %>%
     drop_na() %>%  # Remove any rows with NA values
-    mutate(across(everything(), log))  # Log-transform all selected variables
+    mutate(
+      LMA = log10(LMA + 1),  # Log-transform LMA
+      LDMC = log10(LDMC + 1),  # Log-transform LDMC
+      CHL = log10(CHL + 1),  # Log-transform CHL
+      GRT = log10(GRT + 1)  # Log-transform GRT
+    )
+  
+  names(species_data) <- c("Mes Layers", "LMA (g / m2)", "LDMC (mg / g)", "CHL (ug / cm2)", "Growth (g/d)", "Phi_PS2")
   
   # Compute the correlation matrix for the current species
   # As well as matrix of correlation p-vals (stat significance)
-  cor_matrix <- cor(species_data, method = "pearson")
-  p.mat <- cor_pmat(cor_matrix)
+  cor_matrix <- cor(species_data, method = "spearman")
   
   # Calculate the sample size
   sample_size <- nrow(species_data)
@@ -195,7 +206,6 @@ for (species in species_list) {
                      type = "upper",  # Show only the upper triangle
                      lab = TRUE,  # Add correlation coefficients
                      lab_size = 3,  # Adjust label size
-                     p.mat = p.mat,  # Matrix of p-values
                      sig.level = 0.05,  # Significance level for asterisks
                      insig = "blank",  # Use blank to replace crossings with asterisks
                      colors = c("red", "white", "steelblue"),  # Color gradient

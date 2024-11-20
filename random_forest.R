@@ -185,6 +185,7 @@ p3 <- ggplot(correlation_data, aes(x = treatment_level, y = LMA, color = species
   scale_color_manual(values = josef_colors) + theme_minimal() + facet_wrap(~species) +
   labs(x = "Treatment Level (mmol)", y = "LMA")
 
+# arrange plots using ggarrange
 ggarrange(p1, p2, p3, ncol = 1)
 
 # - - - - - - - - 
