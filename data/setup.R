@@ -29,7 +29,7 @@ library(LeafArea)
 # ------------------------------------------------------ #
 # Read in leaf mass data
 # REMINDER: Set Working Directory -> Source File Location
-mass_data <- read_excel("./leaf_mass_data.xlsx")
+mass_data <- read_excel("./leaf_mass_data.xlsx", sheet="trial2024")
 
 # Define Factor Levels (treatment, species, barcode)
 mass_data$treatment_mmol <- as.factor(mass_data$treatment_mmol)
