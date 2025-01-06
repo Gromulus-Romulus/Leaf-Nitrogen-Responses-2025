@@ -46,13 +46,13 @@ spectra_long <- spectra_long %>%
 
 custom_theme <- theme_classic() +  # Start with a minimal theme
   theme(
-    text = element_text(family = "sans", size = 12),  # Set font family and size
+    text = element_text(family = "sans", size = 12, face="bold"),  # Set font family and size
     axis.title.x = element_text(size = 12),  # Customize x-axis title
     axis.title.y = element_text(size = 12, margin = margin(r = 10)),  # Add margin to y-axis title
     axis.text = element_text(size = 10),  # Customize axis text
     legend.text = element_text(size = 11),  # Customize legend text
     legend.position = "bottom",
-    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth = 0.2),  # Customize major grid lines
+    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth = 0.1),  # Customize major grid lines
     panel.grid.minor = element_blank(),  # Remove minor grid lines
     panel.background = element_rect(fill = "white", color = NA),  # Set panel background
     plot.title = element_blank(), # No title
@@ -90,22 +90,22 @@ spectra_plot <- ggplot(per_species_treatment, aes(x = wavelength, color = treatm
     geom_ribbon(aes(ymin = 100 * (mean_r - 2 * se_r), ymax = 100 * (mean_r + 2 * se_r)), 
                 alpha = 0.3, color = NA) +
     geom_line(aes(y = 100 * mean_r), linewidth = 0.75) +  # Thicker lines for better visibility
-    ylab("% R") + 
+    ylab("% Reflectance") + 
     xlab("Wavelength (nm)") +
     scale_fill_manual(name = "Treatment Level", 
                       values = c("0 - 5 mmol" = "#feb24c", 
-                                 "10 - 15 mmol" = "#7fcdbb", 
-                                 "20 - 25 mmol" = "#6bb09f", 
-                                 "30 - 35 mmol" = "#bd0026")) +
+                                 "10 - 15 mmol" = "#bda48e", 
+                                 "20 - 25 mmol" = "#c9a9a9", 
+                                 "30 - 35 mmol" = "#f20000")) +
     scale_color_manual(name = "Treatment Level", 
                        values = c("0 - 5 mmol" = "#feb24c", 
-                                  "10 - 15 mmol" = "#7fcdbb", 
-                                  "20 - 25 mmol" = "#6bb09f", 
-                                  "30 - 35 mmol" = "#bd0026")) +
+                                  "10 - 15 mmol" = "#bda48e", 
+                                  "20 - 25 mmol" = "#c9a9a9", 
+                                  "30 - 35 mmol" = "#f20000")) +
     facet_wrap(~species) + custom_theme
   
 # Save spectral Plot
-ggsave(filename = "./figures/spectral_plot.pdf", 
+ggsave(filename = "../figures/spectral_plot.pdf", 
        plot = spectra_plot, device = "pdf", width = 10, height = 6)
 
 # Show in plot viewer

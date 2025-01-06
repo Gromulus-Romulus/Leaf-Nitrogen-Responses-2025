@@ -18,12 +18,12 @@ josef_colors <- c("R. sativus" = "#299680", "B. officinalis" = "#7570b2", "H. vu
 # Define the custom theme with a fixed aspect ratio
 custom_theme <- theme_classic() +  # Start with a minimal theme
   theme(
-    text = element_text(family = "sans", size = 12),  # Set font family and size
+    text = element_text(family = "sans", face="bold", size = 12),  # Set font family and size
     axis.title.x = element_text(size = 12),  # Customize x-axis title
     axis.title.y = element_text(size = 12, margin = margin(r = 10)),  # Add margin to y-axis title
     axis.text = element_text(size = 10),  # Customize axis text
     legend.text = element_text(size = 11),  # Customize legend text
-    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth=0.2),  # Customize major grid lines
+    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth=0.1),  # Customize major grid lines
     panel.grid.minor = element_blank(),  # Remove minor grid lines
     panel.background = element_rect(fill = "white", color = NA),  # Set panel background
     plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),  # Center and style the plot title
@@ -61,7 +61,7 @@ for (variable in variables_of_interest) {
     scale_color_manual(values = josef_colors, name=NULL) +
     scale_shape_manual(values = c(16, 17, 18), name=NULL) +  # Set shapes for species
     labs(x = "N (mM)", y = label_units[[variable]]) +
-    custom_theme
+    custom_theme + guides(color = guide_legend(override.aes = list(size = 5, alpha=1.0)))
   
   # Add the plot to the list
   plot_list[[variable]] <- plot
@@ -71,10 +71,14 @@ for (variable in variables_of_interest) {
 combined_plot <- ggarrange(
   plotlist = plot_list,
   nrow = 2, ncol=3,
-  labels = c("a", "b", "c", "d", "e", "f"),  # Add labels to each plot
+  # labels = c("a", "b", "c", "d", "e", "f"),  # Add labels to each plot
   common.legend = TRUE,
   legend = "bottom"
 )
 
 # Display the combined plot
 print(combined_plot)
+
+ggsave(filename = "./figures/traits_plot.pdf", 
+       plot = combined_plot, device = "pdf", width = 10, height = 6)
+

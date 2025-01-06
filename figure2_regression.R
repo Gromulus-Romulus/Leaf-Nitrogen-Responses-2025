@@ -21,12 +21,12 @@ data$species <- factor(data$species, levels=c("R. sativus", "B. officinalis", "H
 # Define a custom theme for all plots
 custom_theme <- theme_classic() +  # Start with a minimal theme
   theme(
-    text = element_text(family = "sans", size = 12),  # Set font family and size
+    text = element_text(family = "sans", face="bold", size = 12),  # Set font family and size
     axis.title.x = element_text(size = 12),  # Customize x-axis title
     axis.title.y = element_text(size = 12, margin = margin(r = 10)),  # Add margin to y-axis title
     axis.text = element_text(size = 10),  # Customize axis text
     legend.text = element_text(size = 11),  # Customize legend text
-    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth=0.2),  # Customize major grid lines
+    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth=0.1),  # Customize major grid lines
     panel.grid.minor = element_blank(),  # Remove minor grid lines
     panel.background = element_rect(fill = "white", color = NA),  # Set panel background
     plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),  # Center and style the plot title
@@ -101,16 +101,16 @@ generate_species_glm_plots <- function(results, data) {
     # Define custom labels with units (no log transformation in the labels)
     x_label <- switch(
       x,
-      "CHL" = "CHL (μg/cm²)",         # Chlorophyll content in micrograms per square centimeter
-      "LDMC" = "LDMC (mg/g)",         # Leaf dry matter content in milligrams per gram
-      "LMA" = "LMA (g/m²)" 
+      "CHL" = "CHL (ug / cm²)",         # Chlorophyll content in micrograms per square centimeter
+      "LDMC" = "LDMC (ug / g)",         # Leaf dry matter content in milligrams per gram
+      "LMA" = "LMA (g / m²)" 
     )
     
     y_label <- switch(
       y,
-      "CHL" = "CHL (μg/cm²)",         # Chlorophyll content in micrograms per square centimeter
-      "LDMC" = "LDMC (mg/g)",         # Leaf dry matter content in milligrams per gram
-      "LMA" = "LMA (g/m²)" 
+      "CHL" = "CHL (ug / cm²)",         # Chlorophyll content in micrograms per square centimeter
+      "LDMC" = "LDMC (mg / g)",         # Leaf dry matter content in milligrams per gram
+      "LMA" = "LMA (g / m²)" 
     )
     
     # Create scatter plot with separate GLM regression lines for each species
@@ -134,5 +134,8 @@ generate_species_glm_plots <- function(results, data) {
 glm_regression_plots <- generate_species_glm_plots(glm_results, data)
 
 # Display the updated plots
-ggarrange(plotlist = glm_regression_plots, labels = c("a", "b", "c"),
+combined_plot <- ggarrange(plotlist = glm_regression_plots, #labels = c("a", "b", "c"),
           nrow=1, common.legend = T, legend="bottom")
+
+ggsave(filename = "./figures/regression_plot.pdf", 
+       plot = combined_plot, device = "pdf", width = 10, height = 4)
