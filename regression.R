@@ -135,7 +135,7 @@ glm_regression_plots <- generate_species_glm_plots(glm_results, data)
 
 # Display the updated plots
 combined_plot <- ggarrange(plotlist = glm_regression_plots, #labels = c("a", "b", "c"),
-          nrow=1, common.legend = T, legend="bottom")
+                           nrow=1, common.legend = T, legend="bottom")
 
 ggsave(filename = "./figures/regression_plot.pdf", 
        plot = combined_plot, device = "pdf", width = 10, height = 4)
