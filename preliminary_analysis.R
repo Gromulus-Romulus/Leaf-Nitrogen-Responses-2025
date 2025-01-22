@@ -39,7 +39,7 @@ traits <- traits %>%
 ##GGplot settings---
 custom_theme <- theme_classic() +  # Start with a minimal theme
   theme(
-    text = element_text(family = "sans", size = 12),  # Set font family and size
+    text = element_text(family = "sans", face="bold", size = 12),  # Set font family and size
     axis.title.x = element_text(size = 12),  # Customize x-axis title
     axis.title.y = element_text(size = 12, margin = margin(r = 10)),  # Add margin to y-axis title
     axis.text = element_text(size = 10),  # Customize axis text
@@ -170,7 +170,7 @@ phi_ps2_Nmm_plot <- phi_ps2_Nmm_plot + theme(legend.position = "bottom")
 figure2_saturation_plot <- ggarrange(
   lma_Nmm_plot, ldmc_Nmm_plot, chl_Nmm_plot, phi_ps2_Nmm_plot,
   ncol = 2, nrow = 2,  # Arrange in a single row
-  labels = c("a", "b", "c", "d"),  # Add subplot labels
+  #labels = c("a", "b", "c", "d"),  # Add subplot labels
   common.legend = TRUE,  # Combine legends into one
   legend = "bottom"  # Place the combined legend at the bottom
 )
@@ -181,7 +181,7 @@ print(figure2_saturation_plot)
 # Save to figures directory
 # TODO: way to include R2 in figures
 ggsave(
-  filename = "./figures/figure2_saturation_plots.tiff",
+  filename = "./figures/figure2_saturation_plots.png",
   plot = figure2_saturation_plot,
   width = 5, height = 5  # Adjust height to accommodate the legend
 )
@@ -368,7 +368,7 @@ print(figure3_regression_plot)
 
 # Save the figure
 ggsave(
-  filename = "./figures/figure3_regression_plots.tiff",
+  filename = "./figures/figure3_regression_plots.png",
   plot = figure3_regression_plot,
   width = 10, height = 7.5  # Adjust width and height for layout
 )
@@ -415,7 +415,7 @@ print(pca_plot)
 
 # Save the PCA plot as Figure 4
 ggsave(
-  filename = "./figures/figure4_pca_plot.tiff",
+  filename = "./figures/figure4_pca_plot.png",
   plot = pca_plot,
   width = 5, height = 5  # Adjust dimensions to fit biplot
 )
