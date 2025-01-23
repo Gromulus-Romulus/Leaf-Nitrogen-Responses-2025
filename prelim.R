@@ -1,69 +1,70 @@
-# Author: Nathan Malamud
-# Date: 2025.01.15
+##' Produce preliminary figures for thesis proposal.
+##'
+##' @author [Nathan Malamud]
+##' @date [2025-01-15]
 
-#Analysis Packages----
+# Libraries ----
 library(tidyverse)
 library(ggplot2)
 library(ggpmisc)
 library(ggpubr)
-library(reshape2)
 library(scales)
 library(smatr)
-library(GGally)
-library(factoextra) # PCA analysis (TODO switch to RDA)
+library(factoextra)
 
-#Load data for traits----
+# Import Data ----
 # REMINDER: Set Working Directory -> Source File Location
-traits <- tryCatch(
-  read_csv("./data/traits.csv"),
-  error = function(e) stop("Error loading traits.csv: ", e)
-)
-
-# Define Factor Levels (Treatment and Species)
+# Define factor levels as species
+traits <-  read_csv("./data/traits.csv")
 traits$species <- factor(traits$species,
-                         levels=c("R. sativus", "B. officinalis", "H. vulgare")
-                         )
+                         levels=c("R. sativus", "B. officinalis", "H. vulgare"))
 
-##Calculate rate of growth----
+# Calculate rate of growth
 growth_period_days <- 6 * 7 # 6 week experiment
 traits$GRT <- (traits$dry_whole_g / growth_period_days)
 
-##Filter by traits of interest only----
+# Filter by metrics of interest only
 traits <- traits %>%
   select(barcodeID, species, treatment_mmol,
          LDMC, LMA, CHL, Phi_PS2, GRT)
 
-#Styling and aesthetics----
+# Styling and aesthetics ----
 # Define a custom theme for all plots
-
-##GGplot settings---
-custom_theme <- theme_classic() +  # Start with a minimal theme
+custom_theme <- theme_classic() +  # Base theme
   theme(
-    text = element_text(family = "sans", face="bold", size = 12),  # Set font family and size
-    axis.title.x = element_text(size = 12),  # Customize x-axis title
-    axis.title.y = element_text(size = 12, margin = margin(r = 10)),  # Add margin to y-axis title
-    axis.text = element_text(size = 10),  # Customize axis text
-    legend.text = element_text(size = 11),  # Customize legend text
-    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth=0.1),  # Customize major grid lines
-    panel.grid.minor = element_blank(),  # Remove minor grid lines
-    panel.background = element_rect(fill = "white", color = NA),  # Set panel background
-    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),  # Center and style the plot title
-    aspect.ratio = 1  # Fix the aspect ratio (1:1)
+    # Text and font styling
+    text = element_text(family = "sans", size = 12),
+    axis.text = element_text(size = 10),  
+    legend.text = element_text(size = 11),
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),  # Centered title
+    
+    # Axis labels
+    axis.title.x = element_text(size = 12),
+    axis.title.y = element_text(size = 12, margin = margin(r = 10)),  # Margin for y-axis title
+    
+    # Panel and grid styling
+    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth = 0.1),  
+    panel.grid.minor = element_blank(),  # No minor grid lines
+    panel.background = element_rect(fill = "white", color = NA),  # White background
+    
+    # Aspect ratio
+    aspect.ratio = 1  # 1:1 ratio
   )
 
-##Custom Colors----
+# Custom colors advised by J. Garen
 josef_colors <- c("R. sativus" = "#299680", "B. officinalis" = "#7570b2", "H. vulgare" = "#ca621c")
 
-# Units - # TODO: format with Latex expressions
+# Define units for variables
+# TODO: format with Latex expressions
 label_units <- c(
-   "CHL" = "CHL (ug / cm²)",         # Chlorophyll content in micrograms per square centimeter
-   "LDMC" = "LDMC (mg / g)",         # Leaf dry matter content in milligrams per gram
+   "CHL" = "CHL (ug / cm²)",
+   "LDMC" = "LDMC (mg / g)",
    "LMA" = "LMA (g / m²)",
    "Phi_PS2" = "PSII Fraction",
    "treatment_mmol" = "N (mM)"
 )
 
-#Treatment Responses-----
+# Treatment Responses-----
 # 1) Show response of LDMC, LMA, CHL, and Phi_PS2 to treatment_mmol
 
 ##LMA saturation----
@@ -159,7 +160,7 @@ phi_ps2_Nmm_plot <- ggplot(traits, aes(y = Phi_PS2, x = treatment_mmol)) +
     shape = guide_legend("Species", override.aes = list(size = 4))
   ) + custom_theme
 
-##Arrange figures with ggarrange and save pdf----
+# Arrange figures with ggarrange and save pdf
 # Update each plot to move the legend to the bottom
 lma_Nmm_plot <- lma_Nmm_plot + theme(legend.position = "bottom")
 ldmc_Nmm_plot <- ldmc_Nmm_plot + theme(legend.position = "bottom")
@@ -170,7 +171,7 @@ phi_ps2_Nmm_plot <- phi_ps2_Nmm_plot + theme(legend.position = "bottom")
 figure2_saturation_plot <- ggarrange(
   lma_Nmm_plot, ldmc_Nmm_plot, chl_Nmm_plot, phi_ps2_Nmm_plot,
   ncol = 2, nrow = 2,  # Arrange in a single row
-  #labels = c("a", "b", "c", "d"),  # Add subplot labels
+  labels = c("a", "b", "c", "d"),  # Add subplot labels
   common.legend = TRUE,  # Combine legends into one
   legend = "bottom"  # Place the combined legend at the bottom
 )
@@ -179,14 +180,14 @@ figure2_saturation_plot <- ggarrange(
 print(figure2_saturation_plot)
 
 # Save to figures directory
-# TODO: way to include R2 in figures
+# TODO: find way to include R2 in figures?
 ggsave(
-  filename = "./figures/figure2_saturation_plots.png",
+  filename = "./figures/prelim/figure2_saturation_plots.png",
   plot = figure2_saturation_plot,
   width = 5, height = 5  # Adjust height to accommodate the legend
 )
 
-#Pairwise Regressions----
+# Log-Log Trait Regressions ----
 # 2) Show pairwise responses of LDMC, LMA, CHL, and Phi_PS2 using glms (log-log sma)
 
 ## LMA vs LDMC----
@@ -352,7 +353,7 @@ phi_ps2_chl_plot <- ggplot(traits, aes(x = CHL, y = Phi_PS2)) +
     shape = guide_legend("Species", override.aes = list(size = 4))
   ) + custom_theme
 
-## apply ggarrange and save as figure 3. ----
+# Apply ggarrange and save as figure 3.
 # Combine all plots
 figure3_regression_plot <- ggarrange(
   lma_ldmc_plot, ldmc_chl_plot, lma_chl_plot,
@@ -368,27 +369,20 @@ print(figure3_regression_plot)
 
 # Save the figure
 ggsave(
-  filename = "./figures/figure3_regression_plots.png",
+  filename = "./figures/prelim/figure3_regression_plots.png",
   plot = figure3_regression_plot,
   width = 10, height = 7.5  # Adjust width and height for layout
 )
  
-#PCA Analysis---
-# 3) Show pairwise regression plot of variables 
-# Fit PCA model
-# PCA Analysis ---
-# Select relevant variables and scale data
-# PCA Analysis ---
+# PCA Analysis ----
 # Select relevant variables and scale data
 pca_data <- traits %>% select(species, LMA, LDMC, CHL, Phi_PS2, GRT)
-
-# Fit PCA model
 pca <- prcomp(pca_data %>% select(-species), center = TRUE, scale. = TRUE)
 
-# Extract explained variation
+# Extract explained variation estimates
 explained_variation <- round(100 * pca$sdev^2 / sum(pca$sdev^2), 1)  # Calculate % variance explained by each PC
 
-# PCA Biplot
+# PCA Biplot creation
 pca_plot <- fviz_pca_biplot(
   pca,
   geom.ind = "point",  # Plot individuals as points
@@ -406,16 +400,18 @@ pca_plot <- fviz_pca_biplot(
   ) +
   custom_theme +
   theme(
-    legend.position = "bottom",  # Position legend below the plot
-    aspect.ratio = 1  # Equal aspect ratio for x and y axes
+    legend.position = "bottom",
+    aspect.ratio = 1
   )
 
 # Print the PCA plot
 print(pca_plot)
 
 # Save the PCA plot as Figure 4
+# TODO: investigated ignored "override.aes" warnings
 ggsave(
-  filename = "./figures/figure4_pca_plot.png",
+  filename = "./figures/prelim/figure4_pca_plot.png",
   plot = pca_plot,
-  width = 5, height = 5  # Adjust dimensions to fit biplot
+  width = 5, height = 5
 )
+
