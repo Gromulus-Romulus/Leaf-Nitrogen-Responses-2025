@@ -1,8 +1,8 @@
 ##' Compare multiple models of nitrogen saturation
-##' for plant functional traits
+##' for plant functional traits using delta_AIC.
 ##' 
 ##' @author [Nathan Malamud]
-##' @date [2025-01-23]
+##' @date [2025-01-27]
 ##' 
 
 # Libraries ----
@@ -49,7 +49,7 @@ label_units <- c(
   "LDMC" = "LDMC",
   "LMA" = "LMA",
   "area_cm2" = "Leaf Area",
-  "Phi_PS2" = "PSII",
+  #"Phi_PS2" = "PSII",
   "CHL" = "CHL",
   "GRT" = "GRT",
   "treatment_mmol" = "N (mM)"
@@ -79,7 +79,7 @@ traits <- traits %>%
 #   - Filters dataframe for one trait and one species
 #   - Fits multiple transformation of variables
 #   - Compares AIC values
-fit_log_models <- function(df, var, species_filter) {
+fit_lm_models <- function(df, var, species_filter) {
   
   # Filter for the selected species
   df <- df %>%
@@ -89,51 +89,129 @@ fit_log_models <- function(df, var, species_filter) {
   # Rename variable for compatibility in models
   colnames(df)[colnames(df) == var] <- "var"
   
-  # Fit models
-  fit1 <- lm(var ~ treatment_mmol, data = df)
-  fit2 <- lm(log(var + 0.01) ~ treatment_mmol, data = df)
-  fit3 <- lm(var ~ log(treatment_mmol + 0.01), data = df)
-  fit4 <- lm(log(var + 0.01) ~ log(treatment_mmol + 0.01), data = df)
-  fit5 <- lm(sqrt(var) ~ treatment_mmol, data = df)
-  fit6 <- lm(var ~ sqrt(treatment_mmol), data = df)
-  fit7 <- lm(sqrt(var) ~ sqrt(treatment_mmol), data=df)
+  # Define the list of model formulas
+  model_formulas <- list(
+    var ~ treatment_mmol,
+    log(var + 0.01) ~ treatment_mmol,
+    var ~ log(treatment_mmol + 0.01),
+    log(var + 0.01) ~ log(treatment_mmol + 0.01),
+    sqrt(var) ~ treatment_mmol,
+    var ~ sqrt(treatment_mmol),
+    sqrt(var) ~ sqrt(treatment_mmol)
+  )
   
-  # Extract model statistics (mini-function)
+  # Fit all models and store them in a list
+  models <- lapply(model_formulas, function(formula) lm(formula, data = df, method="qr"))
+  
+  # Function to extract model statistics
   model_stats <- function(model) {
     data.frame(
-      AIC = AIC(model),
+      AIC_val = AIC(model),
       R2 = summary(model)$r.squared,
-      Adj_R2 = summary(model)$adj.r.squared,
       P_Value = summary(model)$coefficients[2, 4]
     )
   }
   
-  # ... get stats for each model
-  stats1 <- model_stats(fit1)
-  stats2 <- model_stats(fit2)
-  stats3 <- model_stats(fit3)
-  stats4 <- model_stats(fit4)
-  stats5 <- model_stats(fit5)
-  stats6 <- model_stats(fit6)
-  stats7 <- model_stats(fit7)
+  # Extract statistics for all models
+  model_statistics <- lapply(models, model_stats)
   
-  # Combine results into a single dataframe
-  model_df <- rbind(
-    cbind(Model = "X ~ N", stats1),
-    cbind(Model = "log(X) ~ N", stats2),
-    cbind(Model = "X ~ log(N)", stats3),
-    cbind(Model = "log(X) ~ log(N)", stats4),
-    cbind(Model = "sqrt(X) ~ N", stats5),
-    cbind(Model = "X ~ sqrt(N)", stats6),
-    cbind(Model = "sqrt(X) ~ sqrt(N)", stats7)
+  # Combine statistics into a single data frame
+  stats_df <- do.call(rbind, model_statistics)
+  
+  # Add model names for clarity
+  stats_df$model <- paste0("Model ", seq_along(models))
+  
+  # Combine results into a single dataframe with proper labels
+  model_labels <- c(
+    "X ~ N", "log(X) ~ N", "X ~ log(N)", "log(X) ~ log(N)",
+    "X ~ sqrt(N)", "sqrt(X) ~ N", "sqrt(X) ~ sqrt(N)"
   )
   
-  model_df$Model <- factor(model_df$Model,
+  # Add model labels
+  stats_df$Model <- factor(model_labels, levels = model_labels)
+  
+  # Reorder columns for better readability
+  stats_df <- stats_df[, c("Model", "AIC_val", "R2", "P_Value")]
+  
+  stats_df$Model <- factor(stats_df$Model,
                            levels = c(
                              "X ~ N", "log(X) ~ N", "X ~ log(N)", "log(X) ~ log(N)",
                              "X ~ sqrt(N)", "sqrt(X) ~ N", "sqrt(X) ~ sqrt(N)"))
   
-  return(model_df)
+  return(stats_df)
+}
+
+# Define helper function for nls-model fitting ----
+#   - Filters dataframe for one trait and one species
+#   - Compares AIC values
+fit_nls_models <- function(df, var, species_filter) {
+  
+  # Filter for the selected species
+  df <- df %>%
+    filter(species == species_filter) %>%
+    select(species, treatment_mmol, all_of(var))
+  
+  # Rename variable for compatibility in models
+  colnames(df)[colnames(df) == var] <- "var"
+  
+  # Define the list of model formulas (two params, a, and b)
+  model_formulas <- list(
+    var ~ b/(treatment_mmol + a)
+  )
+  
+  # Combine results into a single dataframe with proper labels
+  model_labels <- c(
+    "X ~ 1/(N)"
+  )
+  
+  # Calculate the mean or median of the dependent variable `var`
+  start_b <- mean(df$var, na.rm = TRUE)
+  start_a <- 1  # Small positive value as a starting offset
+  
+  # Fit all models and store them in a list
+  models <- lapply(model_formulas, function(formula) {
+    tryCatch(
+      nls(formula, data = df,
+          start = list("a" = start_a, "b" = start_b)),
+      error = function(e) { message("Error in model fitting: ", e); NULL }
+    )
+  })
+  
+  # Function to extract model statistics
+  model_stats <- function(model) {
+    
+    # Calculate proxy for R2 value
+    rss <- sum(residuals(model)^2)
+    tss <- sum((df$var - mean(df$var))^2)
+    r_squared <- 1 - (rss / tss)
+    
+    # Return model stats as dataframe
+    data.frame(
+      AIC_val = AIC(model),
+      R2 = r_squared,
+      P_Value = summary(model)$coefficients[2, 4]
+    )
+  }
+  
+  # Extract statistics for all models
+  model_statistics <- lapply(models, model_stats)
+  
+  # Combine statistics into a single data frame
+  stats_df <- do.call(rbind, model_statistics)
+  
+  # Add model names for clarity
+  stats_df$model <- paste0("Model ", seq_along(models))
+  
+  # Add model labels
+  stats_df$Model <- factor(model_labels, levels = model_labels)
+  
+  # Reorder columns for better readability
+  stats_df <- stats_df[, c("Model", "AIC_val", "R2", "P_Value")]
+  
+  stats_df$Model <- factor(stats_df$Model,
+                           levels = model_labels)
+  
+  return(stats_df)
 }
 
 # Initialize empty nested structure
@@ -142,94 +220,48 @@ model_results <- list()
 # Loop fits regression models to traits across species
 for (species in levels(traits$species)) {
   # Fit models to separate species for traits of interest
-  lma <- fit_log_models(traits, "LMA", species_filter = species)
-  ldmc <- fit_log_models(traits, "LDMC", species_filter = species)
-  acm2 <- fit_log_models(traits, "area_cm2", species_filter = species)
-  chl <- fit_log_models(traits, "CHL", species_filter = species)
-  psii <- fit_log_models(traits, "Phi_PS2", species_filter = species)
-  grt <- fit_log_models(traits, "GRT", species_filter = species)
   
+  # Fit linear and non-linear models for leaf LMA
+  lma <- rbind(fit_lm_models(traits, "LMA", species_filter = species),
+               fit_nls_models(traits, "LMA", species_filter = species))
+  
+  # Fit linear and non-linear models for LDMC
+  ldmc <- rbind(fit_lm_models(traits, "LDMC", species_filter = species),
+                fit_nls_models(traits, "LDMC", species_filter = species))
+  
+  # # # Fit linear and non-linear models for leaf area
+  # acm2 <- rbind(fit_lm_models(traits, "area_cm2", species_filter = species),
+  #               fit_nls_models(traits, "area_cm2", species_filter = species))
+  # # 
+  # # # Fit linear and non-linear models for chlorophyll content
+  # chl <- rbind(fit_lm_models(traits, "CHL", species_filter = species),
+  #              fit_nls_models(traits, "CHL", species_filter = species))
+  # # 
+  # # # Fit linear and non-linear models for growth rate
+  # grt <- rbind(fit_lm_models(traits, "GRT", species_filter = species),
+  #              fit_nls_models(traits, "GRT", species_filter = species))
+  # 
   # Combine results as entry in nested structure
   model_results[[species]] <- list(
     LMA = lma,
-    LDMC = ldmc,
-    area_cm2 = acm2,
-    CHL = chl,
-    Phi_PS2 = psii,
-    GRT = grt
+    LDMC = ldmc
+    # area_cm2 = acm2,
+    # CHL = chl,
+    # GRT = grt
   )
 }
 
-# Visualizing model comparison ----
+# Save model results as CSV ----
 
 # Define traits of interest
-traits_of_interest <- c("LMA", "LDMC", "area_cm2", "CHL", "Phi_PS2", "GRT")
+traits_of_interest <- c("LMA", "LDMC", "area_cm2", "CHL", "GRT")
 
-# Initialize an empty list to store plots
-plots <- list(
-  "R. sativus" = list(),
-  "B. officinalis" = list(),
-  "H. vulgare" = list()
-)
-
-for (species in levels(traits$species)) {
-  for (trait in traits_of_interest) {
-    
-    # Extract model stats from nested dataframe
-    model_stats <- model_results[[species]][[trait]]
-    
-    # Obtain AIC value for models
-    aic_compare <- model_stats %>% select(Model, AIC)
-    
-    # Create lollipop chart for this species and trait
-    lollipop_plot <- ggplot(aic_compare, aes(x = Model, y = AIC)) +
-      # Add the "head" and "stick" for the lollipop
-      geom_segment(aes(x = Model, xend = Model, y = 0, yend = AIC), color = "gray") +
-      geom_point(size=2.0, color = "black") +
-      custom_theme +
-      ggtitle(paste(label_units[[trait]])) # Add title for each plot
-    
-    # Add the plot to the list
-    plots[[species]] <- append(plots[[species]], list(lollipop_plot))
-  }
-}
-
-# Combine plots for each species into a single row with a common legend
-p1 <- ggarrange(plotlist = plots[["R. sativus"]], nrow = 1)
-p2 <- ggarrange(plotlist = plots[["B. officinalis"]], nrow = 1)
-p3 <- ggarrange(plotlist = plots[["H. vulgare"]], nrow = 1)
-
-# Combine all rows into a single plot
-# Add species labels to the side
-# Combine rows into a single plot
-final_plot <- ggarrange(
-  p1, p2, p3,
-  nrow = 3,
-  labels = NULL # Remove default labels
-)
-
-# Add species labels to the side manually
-annotated_plot <- ggarrange(
-  ggarrange(
-    text_grob("RADISH (n = 39)", rot = 90, size = 12, face="bold"),
-    text_grob("BORAGE (n = 37)", rot = 90, size = 12, face="bold"),
-    text_grob("BARLEY (n = 21)", rot = 90, size = 12, face="bold"),
-    nrow = 3, ncol = 1, widths = c(1) # Create a column for species labels
-  ),
-  final_plot,
-  ncol = 2, widths = c(0.1, 1) # Adjust widths for label and plot
-)
-
-# Display the annotated plot
-print(annotated_plot)
-
-# Save model results as CSV ----
 # Initialize an empty data frame with the desired column names
 model_frame <- data.frame(
   trait = character(),
   species = character(),
   model = character(),
-  AIC = numeric(),
+  AIC_val = numeric(),
   R2 = numeric(),
   p_val = numeric(),
   stringsAsFactors = FALSE
@@ -246,7 +278,7 @@ for (species in levels(traits$species)) {
       trait = trait,
       species = species,
       model = model_stats$Model,
-      AIC = model_stats$AIC,
+      AIC_val = model_stats$AIC_val,
       R2 = model_stats$R2,
       p_val = model_stats$P_Value,
       stringsAsFactors = FALSE
@@ -256,6 +288,9 @@ for (species in levels(traits$species)) {
     model_frame <- rbind(model_frame, temp_frame)
   }
 }
+
+# Order models in dataframe by length of formula
+model_frame$model <- factor(model_frame$model, levels = unique(model_frame$model))
 
 # Save the model results to a CSV file
 write.csv(model_frame, "aic_results.csv", row.names = FALSE)

@@ -1,0 +1,1030 @@
+LDMC_trans,LMA_trans,CHL_trans,Model,AIC,R2,Singular_fit
+identity,identity,identity,Random Intercept,-442.1440932,0.821651529,FALSE
+identity,identity,identity,Random Slope,-452.203658,0.814194587,TRUE
+identity,identity,identity,Random Slope + Intercept,-457.6165224,0.94892921,FALSE
+log,identity,identity,Random Intercept,-453.2150897,0.836305485,FALSE
+log,identity,identity,Random Slope,-460.0892856,0.793277571,TRUE
+log,identity,identity,Random Slope + Intercept,-462.5706185,0.932835083,TRUE
+sqrt,identity,identity,Random Intercept,-449.159475,0.831231427,FALSE
+sqrt,identity,identity,Random Slope,-457.6751361,0.804514495,TRUE
+sqrt,identity,identity,Random Slope + Intercept,-462.6717451,0.961547904,TRUE
+inv,identity,identity,Random Intercept,-463.2682623,0.833499324,FALSE
+inv,identity,identity,Random Slope,-467.080225,0.768568328,TRUE
+inv,identity,identity,Random Slope + Intercept,-472.4256529,0.962557662,TRUE
+inv_sqrt,identity,identity,Random Intercept,-459.7740087,0.836874161,FALSE
+inv_sqrt,identity,identity,Random Slope,-465.0477214,0.781101425,TRUE
+inv_sqrt,identity,identity,Random Slope + Intercept,-470.4861547,0.969149228,TRUE
+sq,identity,identity,Random Intercept,-429.3762636,0.792168377,FALSE
+sq,identity,identity,Random Slope,-437.7958702,0.972229877,FALSE
+sq,identity,identity,Random Slope + Intercept,-436.0172091,0.981819451,TRUE
+cub,identity,identity,Random Intercept,-417.5089667,0.758011372,FALSE
+cub,identity,identity,Random Slope,-415.6958306,0.99982269,TRUE
+cub,identity,identity,Random Slope + Intercept,-409.9830098,0.999895294,TRUE
+identity,log,identity,Random Intercept,-448.9525382,0.848574381,FALSE
+identity,log,identity,Random Slope,-458.0102872,0.826415702,TRUE
+identity,log,identity,Random Slope + Intercept,-461.3766558,0.924620773,FALSE
+log,log,identity,Random Intercept,-460.7077148,0.863314331,FALSE
+log,log,identity,Random Slope,-466.5422459,0.81047165,TRUE
+log,log,identity,Random Slope + Intercept,-468.0065385,0.936857392,TRUE
+sqrt,log,identity,Random Intercept,-456.3418992,0.858170433,FALSE
+sqrt,log,identity,Random Slope,-463.8168412,0.81929518,TRUE
+sqrt,log,identity,Random Slope + Intercept,-468.2650014,0.967043865,FALSE
+inv,log,identity,Random Intercept,-471.0545088,0.860796361,FALSE
+inv,log,identity,Random Slope,-473.9858153,0.789395741,FALSE
+inv,log,identity,Random Slope + Intercept,-477.712352,0.968542558,TRUE
+inv_sqrt,log,identity,Random Intercept,-467.4732581,0.86402593,FALSE
+inv_sqrt,log,identity,Random Slope,-471.761832,0.800426239,TRUE
+inv_sqrt,log,identity,Random Slope + Intercept,-475.6930657,0.968778301,TRUE
+sq,log,identity,Random Intercept,-435.4281757,0.818740219,FALSE
+sq,log,identity,Random Slope,-446.8747914,0.84710895,TRUE
+sq,log,identity,Random Slope + Intercept,-448.6140306,0.957988171,TRUE
+cub,log,identity,Random Intercept,-422.9722028,0.783074567,FALSE
+cub,log,identity,Random Slope,-432.1035794,0.97878104,TRUE
+cub,log,identity,Random Slope + Intercept,-426.9573533,0.861822035,TRUE
+identity,sqrt,identity,Random Intercept,-446.9899982,0.836848697,FALSE
+identity,sqrt,identity,Random Slope,-455.7067666,0.800404694,FALSE
+identity,sqrt,identity,Random Slope + Intercept,-457.2873513,0.87956163,FALSE
+log,sqrt,identity,Random Intercept,-458.4025418,0.851520368,FALSE
+log,sqrt,identity,Random Slope,-464.8712767,0.803020623,TRUE
+log,sqrt,identity,Random Slope + Intercept,-468.444725,0.954045901,TRUE
+sqrt,sqrt,identity,Random Intercept,-454.1939616,0.846445617,FALSE
+sqrt,sqrt,identity,Random Slope,-462.3182572,0.813028387,TRUE
+sqrt,sqrt,identity,Random Slope + Intercept,-467.4245991,0.968715587,TRUE
+inv,sqrt,identity,Random Intercept,-468.5883258,0.848680295,FALSE
+inv,sqrt,identity,Random Slope,-472.0402893,0.780001691,FALSE
+inv,sqrt,identity,Random Slope + Intercept,-475.4261102,0.937933496,TRUE
+inv_sqrt,sqrt,identity,Random Intercept,-465.0589223,0.852088029,FALSE
+inv_sqrt,sqrt,identity,Random Slope,-469.9379654,0.791894889,FALSE
+inv_sqrt,sqrt,identity,Random Slope + Intercept,-474.5972531,0.969253642,TRUE
+sq,sqrt,identity,Random Intercept,-433.834485,0.807041116,FALSE
+sq,sqrt,identity,Random Slope,-440.2950077,0.992376324,TRUE
+sq,sqrt,identity,Random Slope + Intercept,-443.1118023,0.842322488,TRUE
+cub,sqrt,identity,Random Intercept,-421.6634887,0.771860076,FALSE
+cub,sqrt,identity,Random Slope,-413.5550168,0.99999132,TRUE
+cub,sqrt,identity,Random Slope + Intercept,-421.3205533,0.970916875,TRUE
+identity,inv,identity,Random Intercept,-454.7226721,0.861418884,FALSE
+identity,inv,identity,Random Slope,-461.9090428,0.819968644,FALSE
+identity,inv,identity,Random Slope + Intercept,-457.2499083,0.837316942,TRUE
+log,inv,identity,Random Intercept,-467.0409277,0.87651303,FALSE
+log,inv,identity,Random Slope,-471.3015606,0.8177696,TRUE
+log,inv,identity,Random Slope + Intercept,-469.0460632,0.89212207,TRUE
+sqrt,inv,identity,Random Intercept,-462.4020564,0.871053479,FALSE
+sqrt,inv,identity,Random Slope,-468.1941123,0.824775736,FALSE
+sqrt,inv,identity,Random Slope + Intercept,-464.8906349,0.871669341,TRUE
+inv,inv,identity,Random Intercept,-477.7723338,0.875349687,FALSE
+inv,inv,identity,Random Slope,-479.477079,0.800273924,FALSE
+inv,inv,identity,Random Slope + Intercept,-481.7142036,0.967767957,TRUE
+inv_sqrt,inv,identity,Random Intercept,-474.0332046,0.877809165,FALSE
+inv_sqrt,inv,identity,Random Slope,-476.9015846,0.80977994,TRUE
+inv_sqrt,inv,identity,Random Slope + Intercept,-479.3696033,0.96581525,TRUE
+sq,inv,identity,Random Intercept,-440.6631614,0.832019106,FALSE
+sq,inv,identity,Random Slope,-450.1203239,0.82449483,TRUE
+sq,inv,identity,Random Slope + Intercept,-441.4401429,0.955196771,TRUE
+cub,inv,identity,Random Intercept,-427.8030769,0.796497952,FALSE
+cub,inv,identity,Random Slope,-435.9054093,0.77396925,TRUE
+cub,inv,identity,Random Slope + Intercept,-421.6845903,0.997466814,TRUE
+identity,inv_sqrt,identity,Random Intercept,-453.4221532,0.856724137,FALSE
+identity,inv_sqrt,identity,Random Slope,-461.6470426,0.829090775,TRUE
+identity,inv_sqrt,identity,Random Slope + Intercept,-458.6552142,0.839197962,TRUE
+log,inv_sqrt,identity,Random Intercept,-465.4897023,0.871601678,FALSE
+log,inv_sqrt,identity,Random Slope,-470.5524957,0.815520996,TRUE
+log,inv_sqrt,identity,Random Slope + Intercept,-474.0163891,0.966097345,TRUE
+sqrt,inv_sqrt,identity,Random Intercept,-460.9756488,0.866326923,FALSE
+sqrt,inv_sqrt,identity,Random Slope,-467.6370155,0.823135827,TRUE
+sqrt,inv_sqrt,identity,Random Slope + Intercept,-463.7784985,0.859216024,TRUE
+inv,inv_sqrt,identity,Random Intercept,-476.0223162,0.869670758,FALSE
+inv,inv_sqrt,identity,Random Slope,-478.3419447,0.7966682,FALSE
+inv,inv_sqrt,identity,Random Slope + Intercept,-481.2205327,0.96056398,TRUE
+inv_sqrt,inv_sqrt,identity,Random Intercept,-472.3702906,0.872566864,FALSE
+inv_sqrt,inv_sqrt,identity,Random Slope,-475.9552487,0.806539185,FALSE
+inv_sqrt,inv_sqrt,identity,Random Slope + Intercept,-479.1702337,0.967650842,TRUE
+sq,inv_sqrt,identity,Random Intercept,-439.5856962,0.827047038,FALSE
+sq,inv_sqrt,identity,Random Slope,-449.6641291,0.900863998,FALSE
+sq,inv_sqrt,identity,Random Slope + Intercept,-443.6575682,0.86520349,FALSE
+cub,inv_sqrt,identity,Random Intercept,-426.8922102,0.791320068,FALSE
+cub,inv_sqrt,identity,Random Slope,-432.9532127,0.992984182,TRUE
+cub,inv_sqrt,identity,Random Slope + Intercept,-428.3960488,0.969782767,TRUE
+identity,sq,identity,Random Intercept,-434.0663022,0.782886017,FALSE
+identity,sq,identity,Random Slope,-442.9913105,0.744801058,FALSE
+identity,sq,identity,Random Slope + Intercept,-450.5679807,0.966214199,FALSE
+log,sq,identity,Random Intercept,-444.5459064,0.797558418,FALSE
+log,sq,identity,Random Slope,-451.399988,0.768096148,TRUE
+log,sq,identity,Random Slope + Intercept,-458.4114099,0.970422686,TRUE
+sqrt,sq,identity,Random Intercept,-440.7497471,0.792282453,FALSE
+sqrt,sq,identity,Random Slope,-449.1180942,0.781546666,TRUE
+sqrt,sq,identity,Random Slope + Intercept,-456.0173997,0.970651563,TRUE
+inv,sq,identity,Random Intercept,-454.404123,0.796111574,FALSE
+inv,sq,identity,Random Slope,-458.3579572,0.740227139,TRUE
+inv,sq,identity,Random Slope + Intercept,-462.7416555,0.905442429,TRUE
+inv_sqrt,sq,identity,Random Intercept,-450.9508248,0.798652157,FALSE
+inv_sqrt,sq,identity,Random Slope,-456.303641,0.754047875,TRUE
+inv_sqrt,sq,identity,Random Slope + Intercept,-463.4318835,0.968906621,TRUE
+sq,sq,identity,Random Intercept,-422.0020508,0.75528494,FALSE
+sq,sq,identity,Random Slope,-433.5810053,0.867118268,TRUE
+sq,sq,identity,Random Slope + Intercept,-440.1888014,0.957135826,TRUE
+cub,sq,identity,Random Intercept,-410.6950251,0.724977889,FALSE
+cub,sq,identity,Random Slope,-416.7719462,0.991883956,TRUE
+cub,sq,identity,Random Slope + Intercept,-413.691437,0.998304009,TRUE
+identity,cub,identity,Random Intercept,-427.4182778,0.739429728,FALSE
+identity,cub,identity,Random Slope,-435.8248268,0.76647526,TRUE
+identity,cub,identity,Random Slope + Intercept,-442.9112167,0.964709114,FALSE
+log,cub,identity,Random Intercept,-437.4817945,0.754030574,FALSE
+log,cub,identity,Random Slope,-443.4339958,0.737860083,TRUE
+log,cub,identity,Random Slope + Intercept,-449.7460308,0.93527279,TRUE
+sqrt,cub,identity,Random Intercept,-433.8675861,0.748372633,FALSE
+sqrt,cub,identity,Random Slope,-441.0893895,0.75256561,TRUE
+sqrt,cub,identity,Random Slope + Intercept,-448.4204681,0.962139109,TRUE
+inv,cub,identity,Random Intercept,-447.2003486,0.755386129,FALSE
+inv,cub,identity,Random Slope,-450.692524,0.708780634,FALSE
+inv,cub,identity,Random Slope + Intercept,-455.1721024,0.906951999,TRUE
+inv_sqrt,cub,identity,Random Intercept,-443.7782209,0.756234062,FALSE
+inv_sqrt,cub,identity,Random Slope,-448.464353,0.723132362,TRUE
+inv_sqrt,cub,identity,Random Slope + Intercept,-452.8542752,0.915245258,TRUE
+sq,cub,identity,Random Intercept,-415.8562828,0.715244956,FALSE
+sq,cub,identity,Random Slope,-425.910447,0.790638931,TRUE
+sq,cub,identity,Random Slope + Intercept,-432.6010157,0.985938076,TRUE
+cub,cub,identity,Random Intercept,-404.9523712,0.690553157,FALSE
+cub,cub,identity,Random Slope,-407.3524859,0.996607096,TRUE
+cub,cub,identity,Random Slope + Intercept,-409.0093852,0.999379116,TRUE
+identity,identity,log,Random Intercept,-450.3144438,0.813826057,FALSE
+identity,identity,log,Random Slope,-461.7759472,0.81338778,TRUE
+identity,identity,log,Random Slope + Intercept,-468.0567467,0.961671159,FALSE
+log,identity,log,Random Intercept,-461.1949319,0.826879491,FALSE
+log,identity,log,Random Slope,-469.129578,0.790757361,TRUE
+log,identity,log,Random Slope + Intercept,-475.4234355,0.970020197,TRUE
+sqrt,identity,log,Random Intercept,-457.2420709,0.822687503,FALSE
+sqrt,identity,log,Random Slope,-466.982413,0.803289133,TRUE
+sqrt,identity,log,Random Slope + Intercept,-472.5657421,0.961903855,TRUE
+inv,identity,log,Random Intercept,-471.0554618,0.821996306,FALSE
+inv,identity,log,Random Slope,-475.6506023,0.763288808,TRUE
+inv,identity,log,Random Slope + Intercept,-481.7009709,0.950694735,TRUE
+inv_sqrt,identity,log,Random Intercept,-467.6505689,0.826438013,FALSE
+inv_sqrt,identity,log,Random Slope,-473.8371367,0.777198639,FALSE
+inv_sqrt,identity,log,Random Slope + Intercept,-480.1960523,0.969885066,TRUE
+sq,identity,log,Random Intercept,-437.6478329,0.785282193,FALSE
+sq,identity,log,Random Slope,-451.6691238,0.832578694,TRUE
+sq,identity,log,Random Slope + Intercept,-449.5537323,0.905837958,TRUE
+cub,identity,log,Random Intercept,-425.7959026,0.751478191,FALSE
+cub,identity,log,Random Slope,-425.6255908,0.999893606,TRUE
+cub,identity,log,Random Slope + Intercept,-432.7133806,0.956080882,TRUE
+identity,log,log,Random Intercept,-457.6693986,0.844587259,FALSE
+identity,log,log,Random Slope,-466.8226719,0.804231545,TRUE
+identity,log,log,Random Slope + Intercept,-471.2077962,0.934613211,FALSE
+log,log,log,Random Intercept,-469.2407568,0.858055406,FALSE
+log,log,log,Random Slope,-476.1825475,0.808292106,TRUE
+log,log,log,Random Slope + Intercept,-477.8360966,0.936748341,TRUE
+sqrt,log,log,Random Intercept,-464.9801726,0.853631654,FALSE
+sqrt,log,log,Random Slope,-473.684578,0.818031726,TRUE
+sqrt,log,log,Random Slope + Intercept,-478.4310908,0.967413584,FALSE
+inv,log,log,Random Intercept,-479.3570881,0.853673292,FALSE
+inv,log,log,Random Slope,-483.1742209,0.785635152,FALSE
+inv,log,log,Random Slope + Intercept,-486.1373493,0.96063647,TRUE
+inv_sqrt,log,log,Random Intercept,-475.8885984,0.857891954,FALSE
+inv_sqrt,log,log,Random Slope,-481.1710858,0.797537637,TRUE
+inv_sqrt,log,log,Random Slope + Intercept,-485.591439,0.969224348,TRUE
+sq,log,log,Random Intercept,-444.2062238,0.815359496,FALSE
+sq,log,log,Random Slope,-454.5352608,0.935099687,FALSE
+sq,log,log,Random Slope + Intercept,-451.7410359,0.921945404,TRUE
+cub,log,log,Random Intercept,-431.7196036,0.779685439,FALSE
+cub,log,log,Random Slope,-431.7482228,0.999724802,TRUE
+cub,log,log,Random Slope + Intercept,-437.0461657,0.897257843,TRUE
+identity,sqrt,log,Random Intercept,-455.4397533,0.831226077,FALSE
+identity,sqrt,log,Random Slope,-466.0569862,0.786501899,TRUE
+identity,sqrt,log,Random Slope + Intercept,-468.0324556,0.884833656,FALSE
+log,sqrt,log,Random Intercept,-466.6613029,0.844467089,FALSE
+log,sqrt,log,Random Slope,-474.2429307,0.800845679,TRUE
+log,sqrt,log,Random Slope + Intercept,-478.2154351,0.95426897,TRUE
+sqrt,sqrt,log,Random Intercept,-462.5588102,0.840195178,FALSE
+sqrt,sqrt,log,Random Slope,-471.9429385,0.811934269,TRUE
+sqrt,sqrt,log,Random Slope + Intercept,-477.4738492,0.969069847,TRUE
+inv,sqrt,log,Random Intercept,-476.6319276,0.839621325,FALSE
+inv,sqrt,log,Random Slope,-480.9364554,0.7749808,TRUE
+inv,sqrt,log,Random Slope + Intercept,-486.289875,0.966947207,TRUE
+inv_sqrt,sqrt,log,Random Intercept,-473.2051582,0.844079733,FALSE
+inv_sqrt,sqrt,log,Random Slope,-479.0614833,0.788603143,TRUE
+inv_sqrt,sqrt,log,Random Slope + Intercept,-484.4028616,0.969768994,TRUE
+sq,sqrt,log,Random Intercept,-442.3671455,0.802153911,FALSE
+sq,sqrt,log,Random Slope,-454.9973217,0.870634442,TRUE
+sq,sqrt,log,Random Slope + Intercept,-458.3595576,0.902477426,TRUE
+cub,sqrt,log,Random Intercept,-430.1885127,0.767091259,FALSE
+cub,sqrt,log,Random Slope,-433.2011514,0.999148462,TRUE
+cub,sqrt,log,Random Slope + Intercept,-433.4546267,0.986961716,TRUE
+identity,inv,log,Random Intercept,-463.8274424,0.859148687,FALSE
+identity,inv,log,Random Slope,-472.2871719,0.83354661,FALSE
+identity,inv,log,Random Slope + Intercept,-467.3281558,0.843392579,TRUE
+log,inv,log,Random Intercept,-475.9878383,0.873236486,FALSE
+log,inv,log,Random Slope,-481.2303948,0.814871033,TRUE
+log,inv,log,Random Slope + Intercept,-478.9741649,0.890858141,TRUE
+sqrt,inv,log,Random Intercept,-471.4437341,0.868348381,FALSE
+sqrt,inv,log,Random Slope,-478.2867993,0.824895396,FALSE
+sqrt,inv,log,Random Slope + Intercept,-475.0448105,0.871050486,TRUE
+inv,inv,log,Random Intercept,-486.485799,0.870546935,FALSE
+inv,inv,log,Random Slope,-489.0576408,0.796901131,FALSE
+inv,inv,log,Random Slope + Intercept,-491.5517716,0.960147883,TRUE
+inv_sqrt,inv,log,Random Intercept,-482.8651484,0.873827071,FALSE
+inv_sqrt,inv,log,Random Slope,-486.6578809,0.806143705,FALSE
+inv_sqrt,inv,log,Random Slope + Intercept,-489.3808647,0.966085553,FALSE
+sq,inv,log,Random Intercept,-449.7946755,0.830179776,FALSE
+sq,inv,log,Random Slope,-459.7575672,0.908965022,FALSE
+sq,inv,log,Random Slope + Intercept,-452.3776284,0.938809413,TRUE
+cub,inv,log,Random Intercept,-436.8744743,0.794609621,FALSE
+cub,inv,log,Random Slope,-445.817505,0.803615851,TRUE
+cub,inv,log,Random Slope + Intercept,-433.7120883,0.994648418,TRUE
+identity,inv_sqrt,log,Random Intercept,-462.3648281,0.853830765,FALSE
+identity,inv_sqrt,log,Random Slope,-471.8128038,0.819674,FALSE
+identity,inv_sqrt,log,Random Slope + Intercept,-465.8313538,0.853814744,TRUE
+log,inv_sqrt,log,Random Intercept,-474.2608522,0.86757835,FALSE
+log,inv_sqrt,log,Random Slope,-480.380215,0.812914034,TRUE
+log,inv_sqrt,log,Random Slope + Intercept,-477.9985989,0.880581905,TRUE
+sqrt,inv_sqrt,log,Random Intercept,-469.8477273,0.862945258,FALSE
+sqrt,inv_sqrt,log,Random Slope,-477.6605543,0.821570347,TRUE
+sqrt,inv_sqrt,log,Random Slope + Intercept,-473.8971974,0.85812876,TRUE
+inv,inv_sqrt,log,Random Intercept,-484.5569889,0.863953186,FALSE
+inv,inv_sqrt,log,Random Slope,-487.7634234,0.792886877,TRUE
+inv,inv_sqrt,log,Random Slope + Intercept,-491.1857885,0.967369112,TRUE
+inv_sqrt,inv_sqrt,log,Random Intercept,-481.0231387,0.867755684,FALSE
+inv_sqrt,inv_sqrt,log,Random Slope,-485.5789286,0.803308306,TRUE
+inv_sqrt,inv_sqrt,log,Random Slope + Intercept,-489.1425258,0.967689382,TRUE
+sq,inv_sqrt,log,Random Intercept,-448.5693689,0.824677659,FALSE
+sq,inv_sqrt,log,Random Slope,-458.1913387,0.963903462,TRUE
+sq,inv_sqrt,log,Random Slope + Intercept,-454.3326422,0.856337499,TRUE
+cub,inv_sqrt,log,Random Intercept,-435.8266336,0.788886377,FALSE
+cub,inv_sqrt,log,Random Slope,-437.7334622,0.998816431,TRUE
+cub,inv_sqrt,log,Random Slope + Intercept,-433.4754255,0.993581702,TRUE
+identity,sq,log,Random Intercept,-441.7475532,0.769331102,FALSE
+identity,sq,log,Random Slope,-452.6723228,0.792669658,TRUE
+identity,sq,log,Random Slope + Intercept,-459.0276947,0.955392288,TRUE
+log,sq,log,Random Intercept,-452.0604023,0.782071623,FALSE
+log,sq,log,Random Slope,-459.7121381,0.763787499,TRUE
+log,sq,log,Random Slope + Intercept,-468.0476881,0.970245641,FALSE
+sqrt,sq,log,Random Intercept,-448.3499686,0.77778517,FALSE
+sqrt,sq,log,Random Slope,-457.6776189,0.778961904,TRUE
+sqrt,sq,log,Random Slope + Intercept,-465.7373491,0.971649228,TRUE
+inv,sq,log,Random Intercept,-461.7785294,0.778748032,FALSE
+inv,sq,log,Random Slope,-466.2954866,0.732581499,FALSE
+inv,sq,log,Random Slope + Intercept,-473.1741851,0.915327774,TRUE
+inv_sqrt,sq,log,Random Intercept,-458.3867581,0.782183527,FALSE
+inv_sqrt,sq,log,Random Slope,-464.4054883,0.748041116,FALSE
+inv_sqrt,sq,log,Random Slope + Intercept,-471.5088135,0.928152571,TRUE
+sq,sq,log,Random Intercept,-429.7983649,0.743366395,FALSE
+sq,sq,log,Random Slope,-442.9492093,0.817404428,TRUE
+sq,sq,log,Random Slope + Intercept,-450.6590803,0.973320675,TRUE
+cub,sq,log,Random Intercept,-418.5379047,0.714259354,FALSE
+cub,sq,log,Random Slope,-424.2823502,0.99761294,TRUE
+cub,sq,log,Random Slope + Intercept,-426.1274021,0.99533815,TRUE
+identity,cub,log,Random Intercept,-434.797543,0.719995353,FALSE
+identity,cub,log,Random Slope,-442.4334822,0.68924541,FALSE
+identity,cub,log,Random Slope + Intercept,-452.6162786,0.977166385,TRUE
+log,cub,log,Random Intercept,-444.7338771,0.732410913,FALSE
+log,cub,log,Random Slope,-451.1343988,0.731002411,TRUE
+log,cub,log,Random Slope + Intercept,-456.090159,0.919284837,TRUE
+sqrt,cub,log,Random Intercept,-441.1833662,0.72776082,FALSE
+sqrt,cub,log,Random Slope,-448.9682677,0.747626145,TRUE
+sqrt,cub,log,Random Slope + Intercept,-457.7588855,0.959109467,TRUE
+inv,cub,log,Random Intercept,-454.3558799,0.732473858,FALSE
+inv,cub,log,Random Slope,-458.1677375,0.699461704,TRUE
+inv,cub,log,Random Slope + Intercept,-464.1900347,0.90459767,TRUE
+inv_sqrt,cub,log,Random Intercept,-450.974798,0.733834168,FALSE
+inv_sqrt,cub,log,Random Slope,-456.0300617,0.714647774,TRUE
+inv_sqrt,cub,log,Random Slope + Intercept,-461.6092826,0.912504415,TRUE
+sq,cub,log,Random Intercept,-423.3346435,0.698379842,FALSE
+sq,cub,log,Random Slope,-434.6219458,0.790145584,TRUE
+sq,cub,log,Random Slope + Intercept,-436.7134395,0.998812383,TRUE
+cub,cub,log,Random Intercept,-412.4809571,0.676000806,FALSE
+cub,cub,log,Random Slope,-409.4344357,0.999922268,TRUE
+cub,cub,log,Random Slope + Intercept,-417.3467671,0.999487887,TRUE
+identity,identity,sqrt,Random Intercept,-448.6364926,0.820810927,FALSE
+identity,identity,sqrt,Random Slope,-459.2620025,0.81314392,TRUE
+identity,identity,sqrt,Random Slope + Intercept,-465.1652045,0.963994011,TRUE
+log,identity,sqrt,Random Intercept,-459.6576813,0.834857631,FALSE
+log,identity,sqrt,Random Slope,-466.9661018,0.795130884,TRUE
+log,identity,sqrt,Random Slope + Intercept,-472.7529669,0.969755636,TRUE
+sqrt,identity,sqrt,Random Intercept,-455.6288938,0.830077478,FALSE
+sqrt,identity,sqrt,Random Slope,-464.6455135,0.806508703,TRUE
+sqrt,identity,sqrt,Random Slope + Intercept,-470.5378609,0.970012029,TRUE
+inv,identity,sqrt,Random Intercept,-469.6620338,0.831554724,FALSE
+inv,identity,sqrt,Random Slope,-473.7847137,0.769899489,TRUE
+inv,identity,sqrt,Random Slope + Intercept,-479.5411872,0.965071348,TRUE
+inv_sqrt,identity,sqrt,Random Intercept,-466.1900385,0.835158523,FALSE
+inv_sqrt,identity,sqrt,Random Slope,-471.8339053,0.781742623,TRUE
+inv_sqrt,identity,sqrt,Random Slope + Intercept,-477.5893394,0.969410462,FALSE
+sq,identity,sqrt,Random Intercept,-435.8944623,0.791993983,FALSE
+sq,identity,sqrt,Random Slope,-444.896304,0.971978255,TRUE
+sq,identity,sqrt,Random Slope + Intercept,-454.7054901,0.949734447,TRUE
+cub,identity,sqrt,Random Intercept,-424.0291253,0.758474323,FALSE
+cub,identity,sqrt,Random Slope,-432.1110935,0.984103322,TRUE
+cub,identity,sqrt,Random Slope + Intercept,-427.293332,0.989135073,TRUE
+identity,log,sqrt,Random Intercept,-455.6857247,0.848744891,FALSE
+identity,log,sqrt,Random Slope,-465.2688854,0.827714662,TRUE
+identity,log,sqrt,Random Slope + Intercept,-464.7148828,0.861032441,FALSE
+log,log,sqrt,Random Intercept,-467.404523,0.862998463,FALSE
+log,log,sqrt,Random Slope,-473.667079,0.812209309,TRUE
+log,log,sqrt,Random Slope + Intercept,-477.9784175,0.968201342,TRUE
+sqrt,log,sqrt,Random Intercept,-463.0603252,0.858090745,FALSE
+sqrt,log,sqrt,Random Slope,-471.0118574,0.821177639,TRUE
+sqrt,log,sqrt,Random Slope + Intercept,-475.557262,0.967278705,TRUE
+inv,log,sqrt,Random Intercept,-477.7020389,0.860057195,FALSE
+inv,log,sqrt,Random Slope,-480.9643057,0.791365389,FALSE
+inv,log,sqrt,Random Slope + Intercept,-484.9129885,0.969925512,TRUE
+inv_sqrt,log,sqrt,Random Intercept,-474.1449849,0.863488383,FALSE
+inv_sqrt,log,sqrt,Random Slope,-478.8130829,0.802115106,TRUE
+inv_sqrt,log,sqrt,Random Slope + Intercept,-482.9130571,0.969051896,TRUE
+sq,log,sqrt,Random Intercept,-442.1670925,0.819447181,FALSE
+sq,log,sqrt,Random Slope,-450.3630489,0.943625357,TRUE
+sq,log,sqrt,Random Slope + Intercept,-456.6196281,0.944198003,TRUE
+cub,log,sqrt,Random Intercept,-429.6948441,0.784300308,FALSE
+cub,log,sqrt,Random Slope,-422.9355976,0.999981357,TRUE
+cub,log,sqrt,Random Slope + Intercept,-433.6991685,0.983547174,TRUE
+identity,sqrt,sqrt,Random Intercept,-453.609628,0.836608962,FALSE
+identity,sqrt,sqrt,Random Slope,-462.7638552,0.799631402,TRUE
+identity,sqrt,sqrt,Random Slope + Intercept,-460.8502613,0.822729037,TRUE
+log,sqrt,sqrt,Random Intercept,-464.9781541,0.850735233,FALSE
+log,sqrt,sqrt,Random Slope,-471.8893105,0.804841348,TRUE
+log,sqrt,sqrt,Random Slope + Intercept,-476.9231461,0.969277515,TRUE
+sqrt,sqrt,sqrt,Random Intercept,-460.794375,0.845925891,FALSE
+sqrt,sqrt,sqrt,Random Slope,-469.4201146,0.815009374,TRUE
+sqrt,sqrt,sqrt,Random Slope + Intercept,-474.6618202,0.968938075,FALSE
+inv,sqrt,sqrt,Random Intercept,-475.1135184,0.847425492,FALSE
+inv,sqrt,sqrt,Random Slope,-478.8935006,0.781830517,TRUE
+inv,sqrt,sqrt,Random Slope + Intercept,-483.6679685,0.963416813,FALSE
+inv_sqrt,sqrt,sqrt,Random Intercept,-471.6080158,0.851054747,FALSE
+inv_sqrt,sqrt,sqrt,Random Slope,-476.8713229,0.793490685,TRUE
+inv_sqrt,sqrt,sqrt,Random Slope + Intercept,-481.7639715,0.969309303,TRUE
+sq,sqrt,sqrt,Random Intercept,-440.4698415,0.807392448,FALSE
+sq,sqrt,sqrt,Random Slope,-449.4539557,0.965727269,TRUE
+sq,sqrt,sqrt,Random Slope + Intercept,-447.123466,0.907248211,TRUE
+cub,sqrt,sqrt,Random Intercept,-428.2911514,0.772775055,FALSE
+cub,sqrt,sqrt,Random Slope,-430.2172987,0.998735678,TRUE
+cub,sqrt,sqrt,Random Slope + Intercept,-430.4108418,0.956669381,TRUE
+identity,inv,sqrt,Random Intercept,-461.59735,0.861912449,FALSE
+identity,inv,sqrt,Random Slope,-469.2273715,0.825641632,FALSE
+identity,inv,sqrt,Random Slope + Intercept,-463.2289197,0.849576214,FALSE
+log,inv,sqrt,Random Intercept,-473.8930374,0.876623113,FALSE
+log,inv,sqrt,Random Slope,-478.5142238,0.819082989,TRUE
+log,inv,sqrt,Random Slope + Intercept,-481.2497572,0.963961975,FALSE
+sqrt,inv,sqrt,Random Intercept,-469.2689037,0.87134621,FALSE
+sqrt,inv,sqrt,Random Slope,-475.4474445,0.826750274,FALSE
+sqrt,inv,sqrt,Random Slope + Intercept,-472.1850384,0.872608183,TRUE
+inv,inv,sqrt,Random Intercept,-484.5848996,0.875140584,FALSE
+inv,inv,sqrt,Random Slope,-486.5980173,0.802305462,FALSE
+inv,inv,sqrt,Random Slope + Intercept,-488.9595901,0.968005766,TRUE
+inv_sqrt,inv,sqrt,Random Intercept,-480.8660167,0.877751818,FALSE
+inv_sqrt,inv,sqrt,Random Slope,-484.0697711,0.811088445,FALSE
+inv_sqrt,inv,sqrt,Random Slope + Intercept,-486.6329868,0.966053054,TRUE
+sq,inv,sqrt,Random Intercept,-447.53235,0.83293674,FALSE
+sq,inv,sqrt,Random Slope,-457.6408102,0.858664993,TRUE
+sq,inv,sqrt,Random Slope + Intercept,-450.7059073,0.898479755,TRUE
+cub,inv,sqrt,Random Intercept,-434.6486483,0.797922501,FALSE
+cub,inv,sqrt,Random Slope,-425.2097151,0.999986693,TRUE
+cub,inv,sqrt,Random Slope + Intercept,-428.9511231,0.997610185,TRUE
+identity,inv_sqrt,sqrt,Random Intercept,-460.2431104,0.857129983,FALSE
+identity,inv_sqrt,sqrt,Random Slope,-468.9297793,0.825984184,TRUE
+identity,inv_sqrt,sqrt,Random Slope + Intercept,-463.1898218,0.8367634,FALSE
+log,inv_sqrt,sqrt,Random Intercept,-472.2820619,0.87157531,FALSE
+log,inv_sqrt,sqrt,Random Slope,-477.7425653,0.817035096,TRUE
+log,inv_sqrt,sqrt,Random Slope + Intercept,-475.3274213,0.883019409,TRUE
+sqrt,inv_sqrt,sqrt,Random Intercept,-467.7859728,0.866508646,FALSE
+sqrt,inv_sqrt,sqrt,Random Slope,-474.8821632,0.824817403,TRUE
+sqrt,inv_sqrt,sqrt,Random Slope + Intercept,-471.0714386,0.860414278,TRUE
+inv,inv_sqrt,sqrt,Random Intercept,-482.7693155,0.869273955,FALSE
+inv,inv_sqrt,sqrt,Random Slope,-485.4114888,0.798308882,TRUE
+inv,inv_sqrt,sqrt,Random Slope + Intercept,-488.5490514,0.969289611,TRUE
+inv_sqrt,inv_sqrt,sqrt,Random Intercept,-479.140184,0.872346833,FALSE
+inv_sqrt,inv_sqrt,sqrt,Random Slope,-483.0859113,0.808020022,TRUE
+inv_sqrt,inv_sqrt,sqrt,Random Slope + Intercept,-486.424617,0.967947517,FALSE
+sq,inv_sqrt,sqrt,Random Intercept,-446.4047312,0.827946958,FALSE
+sq,inv_sqrt,sqrt,Random Slope,-456.0752201,0.94699132,TRUE
+sq,inv_sqrt,sqrt,Random Slope + Intercept,-449.8021015,0.876369004,TRUE
+cub,inv_sqrt,sqrt,Random Intercept,-433.6892727,0.792711753,FALSE
+cub,inv_sqrt,sqrt,Random Slope,-443.5611382,0.809518159,TRUE
+cub,inv_sqrt,sqrt,Random Slope + Intercept,-436.0756161,0.966993868,TRUE
+identity,sq,sqrt,Random Intercept,-440.313,0.780355121,FALSE
+identity,sq,sqrt,Random Slope,-448.2988527,0.757280175,FALSE
+identity,sq,sqrt,Random Slope + Intercept,-457.3789476,0.963016137,FALSE
+log,sq,sqrt,Random Intercept,-450.7396795,0.794300554,FALSE
+log,sq,sqrt,Random Slope,-457.9433024,0.769365886,TRUE
+log,sq,sqrt,Random Slope + Intercept,-465.4058141,0.970591173,TRUE
+sqrt,sq,sqrt,Random Intercept,-446.9702802,0.789359456,FALSE
+sqrt,sq,sqrt,Random Slope,-455.7560609,0.783194641,TRUE
+sqrt,sq,sqrt,Random Slope + Intercept,-463.0330857,0.971427838,TRUE
+inv,sq,sqrt,Random Intercept,-460.5570809,0.792403485,FALSE
+inv,sq,sqrt,Random Slope,-464.7496582,0.740842255,TRUE
+inv,sq,sqrt,Random Slope + Intercept,-468.5847807,0.902342053,TRUE
+inv_sqrt,sq,sqrt,Random Intercept,-457.1210745,0.795128302,FALSE
+inv_sqrt,sq,sqrt,Random Slope,-462.7635983,0.754941471,TRUE
+inv_sqrt,sq,sqrt,Random Slope + Intercept,-470.4083125,0.969496674,TRUE
+sq,sq,sqrt,Random Intercept,-428.2877858,0.753652144,FALSE
+sq,sq,sqrt,Random Slope,-440.4925746,0.865294361,TRUE
+sq,sq,sqrt,Random Slope + Intercept,-447.8730874,0.969095286,TRUE
+cub,sq,sqrt,Random Intercept,-416.9982929,0.724239153,FALSE
+cub,sq,sqrt,Random Slope,-426.5971763,0.942393166,TRUE
+cub,sq,sqrt,Random Slope + Intercept,-421.2831485,0.998180553,TRUE
+identity,cub,sqrt,Random Intercept,-433.4843163,0.735026766,FALSE
+identity,cub,sqrt,Random Slope,-441.7568445,0.712785867,TRUE
+identity,cub,sqrt,Random Slope + Intercept,-449.7255746,0.964249849,TRUE
+log,cub,sqrt,Random Intercept,-443.5005369,0.748807682,FALSE
+log,cub,sqrt,Random Slope,-449.6698103,0.738282255,TRUE
+log,cub,sqrt,Random Slope + Intercept,-457.9170638,0.961307633,TRUE
+sqrt,cub,sqrt,Random Intercept,-439.9095453,0.74349666,FALSE
+sqrt,cub,sqrt,Random Slope,-447.3990096,0.753487562,TRUE
+sqrt,cub,sqrt,Random Slope + Intercept,-455.4295132,0.970103718,TRUE
+inv,cub,sqrt,Random Intercept,-453.186377,0.749881092,FALSE
+inv,cub,sqrt,Random Slope,-456.826229,0.709117441,FALSE
+inv,cub,sqrt,Random Slope + Intercept,-461.902069,0.906749453,TRUE
+inv_sqrt,cub,sqrt,Random Intercept,-449.7776325,0.750801114,FALSE
+inv_sqrt,cub,sqrt,Random Slope,-454.6412881,0.723178502,FALSE
+inv_sqrt,cub,sqrt,Random Slope + Intercept,-459.8305167,0.914645815,TRUE
+sq,cub,sqrt,Random Intercept,-421.9623311,0.712042726,FALSE
+sq,cub,sqrt,Random Slope,-432.4401796,0.802182516,TRUE
+sq,cub,sqrt,Random Slope + Intercept,-438.5860571,0.988819813,TRUE
+cub,cub,sqrt,Random Intercept,-411.0812305,0.688586256,FALSE
+cub,cub,sqrt,Random Slope,-411.823307,0.999115055,TRUE
+cub,cub,sqrt,Random Slope + Intercept,-418.4393956,0.999183476,TRUE
+identity,identity,inv,Random Intercept,-446.1954152,0.769940866,FALSE
+identity,identity,inv,Random Slope,-458.7349953,0.738955986,TRUE
+identity,identity,inv,Random Slope + Intercept,-464.0627008,0.934004072,FALSE
+log,identity,inv,Random Intercept,-456.5615803,0.779333988,FALSE
+log,identity,inv,Random Slope,-465.404643,0.753475764,TRUE
+log,identity,inv,Random Slope + Intercept,-472.9133616,0.969420501,TRUE
+sqrt,identity,inv,Random Intercept,-452.8775205,0.777637736,FALSE
+sqrt,identity,inv,Random Slope,-463.7087532,0.766038914,TRUE
+sqrt,identity,inv,Random Slope + Intercept,-470.9833824,0.96948021,TRUE
+inv,identity,inv,Random Intercept,-465.9597159,0.76636015,FALSE
+inv,identity,inv,Random Slope,-471.2792489,0.713749127,FALSE
+inv,identity,inv,Random Slope + Intercept,-479.0453456,0.948767122,TRUE
+inv_sqrt,identity,inv,Random Intercept,-462.7624414,0.775239965,FALSE
+inv_sqrt,identity,inv,Random Slope,-469.7384225,0.733754223,TRUE
+inv_sqrt,identity,inv,Random Slope + Intercept,-477.5577302,0.969195336,TRUE
+sq,identity,inv,Random Intercept,-433.8580364,0.739969045,FALSE
+sq,identity,inv,Random Slope,-449.9035676,0.810099194,TRUE
+sq,identity,inv,Random Slope + Intercept,-445.9783113,0.926049878,TRUE
+cub,identity,inv,Random Intercept,-422.1227051,0.7013634,FALSE
+cub,identity,inv,Random Slope,-423.7499081,0.999961674,TRUE
+cub,identity,inv,Random Slope + Intercept,-431.7110003,0.957945626,TRUE
+identity,log,inv,Random Intercept,-453.9182359,0.814481212,FALSE
+identity,log,inv,Random Slope,-465.8914086,0.766067308,TRUE
+identity,log,inv,Random Slope + Intercept,-465.5275681,0.851283321,TRUE
+log,log,inv,Random Intercept,-464.8432335,0.825166564,FALSE
+log,log,inv,Random Slope,-473.1663709,0.772754166,TRUE
+log,log,inv,Random Slope + Intercept,-474.639246,0.928832403,TRUE
+sqrt,log,inv,Random Intercept,-460.9332591,0.822803007,FALSE
+sqrt,log,inv,Random Slope,-471.1787281,0.785353109,TRUE
+sqrt,log,inv,Random Slope + Intercept,-476.1276169,0.965830353,TRUE
+inv,log,inv,Random Intercept,-474.2796738,0.813118066,FALSE
+inv,log,inv,Random Slope,-479.2757204,0.741795065,FALSE
+inv,log,inv,Random Slope + Intercept,-484.3963651,0.963618838,FALSE
+inv_sqrt,log,inv,Random Intercept,-471.1315776,0.821685083,FALSE
+inv_sqrt,log,inv,Random Slope,-477.6796586,0.758808495,TRUE
+inv_sqrt,log,inv,Random Slope + Intercept,-482.6724677,0.967847441,TRUE
+sq,log,inv,Random Intercept,-440.79773,0.782922474,FALSE
+sq,log,inv,Random Slope,-456.0417975,0.847972706,TRUE
+sq,log,inv,Random Slope + Intercept,-451.7301013,0.922960128,TRUE
+cub,log,inv,Random Intercept,-428.3780955,0.741166233,FALSE
+cub,log,inv,Random Slope,-428.0480447,0.999973196,TRUE
+cub,log,inv,Random Slope + Intercept,-432.666603,0.99687414,TRUE
+identity,sqrt,inv,Random Intercept,-451.4543975,0.794907748,FALSE
+identity,sqrt,inv,Random Slope,-463.9027716,0.75217044,TRUE
+identity,sqrt,inv,Random Slope + Intercept,-461.6492364,0.810000082,FALSE
+log,sqrt,inv,Random Intercept,-462.0848954,0.804942007,FALSE
+log,sqrt,inv,Random Slope,-470.8490892,0.765784319,TRUE
+log,sqrt,inv,Random Slope + Intercept,-475.0929326,0.949883594,TRUE
+sqrt,sqrt,inv,Random Intercept,-458.2969346,0.802960905,FALSE
+sqrt,sqrt,inv,Random Slope,-469.0441476,0.781851785,TRUE
+sqrt,sqrt,inv,Random Slope + Intercept,-475.0977893,0.967837456,FALSE
+inv,sqrt,inv,Random Intercept,-471.4815686,0.792059528,FALSE
+inv,sqrt,inv,Random Slope,-476.757126,0.729299189,TRUE
+inv,sqrt,inv,Random Slope + Intercept,-481.7418373,0.924464252,TRUE
+inv_sqrt,sqrt,inv,Random Intercept,-468.318913,0.80101146,FALSE
+inv_sqrt,sqrt,inv,Random Slope,-475.2310301,0.74794444,TRUE
+inv_sqrt,sqrt,inv,Random Slope + Intercept,-481.5658414,0.96877423,TRUE
+sq,sqrt,inv,Random Intercept,-438.7286086,0.763808476,FALSE
+sq,sqrt,inv,Random Slope,-454.7324465,0.806437115,TRUE
+sq,sqrt,inv,Random Slope + Intercept,-448.8286298,0.854467032,TRUE
+cub,sqrt,inv,Random Intercept,-426.6489004,0.72309351,FALSE
+cub,sqrt,inv,Random Slope,-432.4267537,0.999647234,TRUE
+cub,sqrt,inv,Random Slope + Intercept,-430.8266336,0.996917211,TRUE
+identity,inv,inv,Random Intercept,-460.7220072,0.837201265,FALSE
+identity,inv,inv,Random Slope,-470.9872072,0.814639469,FALSE
+identity,inv,inv,Random Slope + Intercept,-465.6169704,0.830234153,FALSE
+log,inv,inv,Random Intercept,-472.2097719,0.849159895,FALSE
+log,inv,inv,Random Slope,-478.9857579,0.782612477,TRUE
+log,inv,inv,Random Slope + Intercept,-481.7622836,0.961459143,TRUE
+sqrt,inv,inv,Random Intercept,-468.044748,0.84591944,FALSE
+sqrt,inv,inv,Random Slope,-476.5240075,0.793612681,TRUE
+sqrt,inv,inv,Random Slope + Intercept,-479.3267612,0.958711323,TRUE
+inv,inv,inv,Random Intercept,-481.8800532,0.839901555,FALSE
+inv,inv,inv,Random Slope,-485.873247,0.75654015,TRUE
+inv,inv,inv,Random Slope + Intercept,-488.5713342,0.966224421,TRUE
+inv_sqrt,inv,inv,Random Intercept,-478.6666419,0.846971453,FALSE
+inv_sqrt,inv,inv,Random Slope,-483.9298275,0.770241698,FALSE
+inv_sqrt,inv,inv,Random Slope + Intercept,-486.6530107,0.963816232,TRUE
+sq,inv,inv,Random Intercept,-446.9689753,0.805814892,FALSE
+sq,inv,inv,Random Slope,-460.288846,0.818062562,TRUE
+sq,inv,inv,Random Slope + Intercept,-454.374147,0.883084263,FALSE
+cub,inv,inv,Random Intercept,-434.0293327,0.764111938,FALSE
+cub,inv,inv,Random Slope,-437.3165766,0.99937232,TRUE
+cub,inv,inv,Random Slope + Intercept,-436.6145268,0.992770148,TRUE
+identity,inv_sqrt,inv,Random Intercept,-458.9196794,0.828478435,FALSE
+identity,inv_sqrt,inv,Random Slope,-470.1114085,0.778536928,FALSE
+identity,inv_sqrt,inv,Random Slope + Intercept,-464.4854744,0.842310661,FALSE
+log,inv_sqrt,inv,Random Intercept,-470.1417293,0.839805554,FALSE
+log,inv_sqrt,inv,Random Slope,-477.7558761,0.78042917,TRUE
+log,inv_sqrt,inv,Random Slope + Intercept,-481.5805739,0.964492381,TRUE
+sqrt,inv_sqrt,inv,Random Intercept,-466.1013422,0.837011291,FALSE
+sqrt,inv_sqrt,inv,Random Slope,-475.541174,0.792808775,TRUE
+sqrt,inv_sqrt,inv,Random Slope + Intercept,-471.694628,0.835049127,TRUE
+inv,inv_sqrt,inv,Random Intercept,-479.6700179,0.829047093,FALSE
+inv,inv_sqrt,inv,Random Slope,-484.2065739,0.751114558,FALSE
+inv,inv_sqrt,inv,Random Slope + Intercept,-488.0595003,0.96771601,TRUE
+inv_sqrt,inv_sqrt,inv,Random Intercept,-476.5062289,0.836937088,FALSE
+inv_sqrt,inv_sqrt,inv,Random Slope,-482.464783,0.766221084,FALSE
+inv_sqrt,inv_sqrt,inv,Random Slope + Intercept,-486.2663953,0.966306644,TRUE
+sq,inv_sqrt,inv,Random Intercept,-445.4427336,0.796894954,FALSE
+sq,inv_sqrt,inv,Random Slope,-459.9518992,0.818469789,TRUE
+sq,inv_sqrt,inv,Random Slope + Intercept,-450.2076936,0.940274527,TRUE
+cub,inv_sqrt,inv,Random Intercept,-432.7254326,0.75490345,FALSE
+cub,inv_sqrt,inv,Random Slope,-434.0025614,0.999881867,TRUE
+cub,inv_sqrt,inv,Random Slope + Intercept,-435.1291805,0.994582301,TRUE
+identity,sq,inv,Random Intercept,-437.6931307,0.708357447,FALSE
+identity,sq,inv,Random Slope,-448.9275275,0.699021991,TRUE
+identity,sq,inv,Random Slope + Intercept,-457.5155429,0.956573226,FALSE
+log,sq,inv,Random Intercept,-447.6713125,0.716645565,FALSE
+log,sq,inv,Random Slope,-455.5903414,0.720546249,TRUE
+log,sq,inv,Random Slope + Intercept,-466.1489606,0.9707763,TRUE
+sqrt,sq,inv,Random Intercept,-444.1307191,0.715042432,FALSE
+sqrt,sq,inv,Random Slope,-453.8617558,0.742137224,TRUE
+sqrt,sq,inv,Random Slope + Intercept,-463.997414,0.971769175,TRUE
+inv,sq,inv,Random Intercept,-457.1263364,0.706404191,FALSE
+inv,sq,inv,Random Slope,-461.8664597,0.676842344,FALSE
+inv,sq,inv,Random Slope + Intercept,-472.8370162,0.963503923,FALSE
+inv_sqrt,sq,inv,Random Intercept,-453.8470472,0.713421568,FALSE
+inv_sqrt,sq,inv,Random Slope,-460.0786419,0.698349134,FALSE
+inv_sqrt,sq,inv,Random Slope + Intercept,-470.111074,0.937455228,TRUE
+sq,sq,inv,Random Intercept,-425.986504,0.68311187,FALSE
+sq,sq,inv,Random Slope,-440.6717408,0.793177957,TRUE
+sq,sq,inv,Random Slope + Intercept,-448.2092252,0.968399789,TRUE
+cub,sq,inv,Random Intercept,-414.8322659,0.652117851,FALSE
+cub,sq,inv,Random Slope,-423.2699074,0.997825862,TRUE
+cub,sq,inv,Random Slope + Intercept,-417.3927231,0.999665823,TRUE
+identity,cub,inv,Random Intercept,-431.1474543,0.645059774,FALSE
+identity,cub,inv,Random Slope,-439.8190371,0.651030947,TRUE
+identity,cub,inv,Random Slope + Intercept,-451.3634729,0.961681761,TRUE
+log,cub,inv,Random Intercept,-440.9095378,0.652609936,FALSE
+log,cub,inv,Random Slope,-447.0498195,0.681532587,TRUE
+log,cub,inv,Random Slope + Intercept,-458.3158099,0.938634309,TRUE
+sqrt,cub,inv,Random Intercept,-437.4462112,0.650515405,FALSE
+sqrt,cub,inv,Random Slope,-445.022293,0.70422781,TRUE
+sqrt,cub,inv,Random Slope + Intercept,-457.0549479,0.966717573,TRUE
+inv,cub,inv,Random Intercept,-450.4068249,0.647902657,FALSE
+inv,cub,inv,Random Slope,-454.0678884,0.636336195,FALSE
+inv,cub,inv,Random Slope + Intercept,-461.8251595,0.889800422,TRUE
+inv_sqrt,cub,inv,Random Intercept,-447.0765431,0.651495796,FALSE
+inv_sqrt,cub,inv,Random Slope,-451.8978648,0.659505888,TRUE
+inv_sqrt,cub,inv,Random Slope + Intercept,-459.347583,0.900777976,TRUE
+sq,cub,inv,Random Intercept,-419.815259,0.626712118,FALSE
+sq,cub,inv,Random Slope,-431.5357597,0.750353705,TRUE
+sq,cub,inv,Random Slope + Intercept,-440.1706577,0.972721528,TRUE
+cub,cub,inv,Random Intercept,-409.0180291,0.605708076,FALSE
+cub,cub,inv,Random Slope,-403.7047662,0.999987922,TRUE
+cub,cub,inv,Random Slope + Intercept,-417.3077476,0.999322214,TRUE
+identity,identity,inv_sqrt,Random Intercept,-451.1724617,0.796548782,FALSE
+identity,identity,inv_sqrt,Random Slope,-463.4175356,0.777374399,TRUE
+identity,identity,inv_sqrt,Random Slope + Intercept,-470.1384746,0.962508714,TRUE
+log,identity,inv_sqrt,Random Intercept,-461.8060616,0.80802244,FALSE
+log,identity,inv_sqrt,Random Slope,-470.3681318,0.776509561,TRUE
+log,identity,inv_sqrt,Random Slope + Intercept,-477.3374755,0.969994972,TRUE
+sqrt,identity,inv_sqrt,Random Intercept,-457.9840456,0.804877065,FALSE
+sqrt,identity,inv_sqrt,Random Slope,-468.4606717,0.791327422,TRUE
+sqrt,identity,inv_sqrt,Random Slope + Intercept,-475.3208828,0.970081917,TRUE
+inv,identity,inv_sqrt,Random Intercept,-471.4306155,0.79984642,FALSE
+inv,identity,inv_sqrt,Random Slope,-476.5185396,0.743911154,FALSE
+inv,identity,inv_sqrt,Random Slope + Intercept,-481.7999685,0.918499565,FALSE
+inv_sqrt,identity,inv_sqrt,Random Intercept,-468.1338513,0.806087367,FALSE
+inv_sqrt,identity,inv_sqrt,Random Slope,-474.8680638,0.760430048,TRUE
+inv_sqrt,identity,inv_sqrt,Random Slope + Intercept,-481.9095272,0.959766113,TRUE
+sq,identity,inv_sqrt,Random Intercept,-438.6533458,0.76760888,FALSE
+sq,identity,inv_sqrt,Random Slope,-453.6836838,0.862549647,TRUE
+sq,identity,inv_sqrt,Random Slope + Intercept,-451.5769481,0.926032082,TRUE
+cub,identity,inv_sqrt,Random Intercept,-426.8447304,0.73204979,FALSE
+cub,identity,inv_sqrt,Random Slope,-428.6185513,0.999904025,TRUE
+cub,identity,inv_sqrt,Random Slope + Intercept,-417.7671021,0.999999274,FALSE
+identity,log,inv_sqrt,Random Intercept,-458.8035909,0.832980759,FALSE
+identity,log,inv_sqrt,Random Slope,-470.2061095,0.805054756,TRUE
+identity,log,inv_sqrt,Random Slope + Intercept,-473.6309919,0.919998819,FALSE
+log,log,inv_sqrt,Random Intercept,-470.0797244,0.845232497,FALSE
+log,log,inv_sqrt,Random Slope,-477.8279112,0.795305803,TRUE
+log,log,inv_sqrt,Random Slope + Intercept,-479.4682597,0.933895563,TRUE
+sqrt,log,inv_sqrt,Random Intercept,-465.9817263,0.841672701,FALSE
+sqrt,log,inv_sqrt,Random Slope,-475.5801641,0.806865553,TRUE
+sqrt,log,inv_sqrt,Random Slope + Intercept,-479.2510013,0.963456715,FALSE
+inv,log,inv_sqrt,Random Intercept,-479.8666625,0.837771778,FALSE
+inv,log,inv_sqrt,Random Slope,-484.3663697,0.766829627,FALSE
+inv,log,inv_sqrt,Random Slope + Intercept,-489.1812379,0.965083837,TRUE
+inv_sqrt,log,inv_sqrt,Random Intercept,-476.555888,0.843725839,FALSE
+inv_sqrt,log,inv_sqrt,Random Slope,-482.576783,0.782426065,TRUE
+inv_sqrt,log,inv_sqrt,Random Slope + Intercept,-487.3702234,0.968798136,TRUE
+sq,log,inv_sqrt,Random Intercept,-445.482574,0.80299901,FALSE
+sq,log,inv_sqrt,Random Slope,-459.834587,0.838797341,TRUE
+sq,log,inv_sqrt,Random Slope + Intercept,-455.2534322,0.939530249,TRUE
+cub,log,inv_sqrt,Random Intercept,-433.0088626,0.765081122,FALSE
+cub,log,inv_sqrt,Random Slope,-439.11878,0.998304524,TRUE
+cub,log,inv_sqrt,Random Slope + Intercept,-439.4725438,0.981975877,TRUE
+identity,sqrt,inv_sqrt,Random Intercept,-456.4185934,0.817092372,FALSE
+identity,sqrt,inv_sqrt,Random Slope,-466.7348567,0.768611901,TRUE
+identity,sqrt,inv_sqrt,Random Slope + Intercept,-470.1976329,0.885601213,FALSE
+log,sqrt,inv_sqrt,Random Intercept,-467.3638331,0.828943272,FALSE
+log,sqrt,inv_sqrt,Random Slope,-475.6839088,0.787400198,TRUE
+log,sqrt,inv_sqrt,Random Slope + Intercept,-479.8683336,0.952742828,TRUE
+sqrt,sqrt,inv_sqrt,Random Intercept,-463.41055,0.825630363,FALSE
+sqrt,sqrt,inv_sqrt,Random Slope,-473.6351372,0.800522735,TRUE
+sqrt,sqrt,inv_sqrt,Random Slope + Intercept,-479.5090982,0.968814304,TRUE
+inv,sqrt,inv_sqrt,Random Intercept,-477.0494746,0.82085444,FALSE
+inv,sqrt,inv_sqrt,Random Slope,-475.0347167,0.731247074,FALSE
+inv,sqrt,inv_sqrt,Random Slope + Intercept,-487.9977524,0.965712356,TRUE
+inv_sqrt,sqrt,inv_sqrt,Random Intercept,-473.7562262,0.827116933,FALSE
+inv_sqrt,sqrt,inv_sqrt,Random Slope,-480.2724318,0.77279897,TRUE
+inv_sqrt,sqrt,inv_sqrt,Random Slope + Intercept,-486.1879399,0.969579828,TRUE
+sq,sqrt,inv_sqrt,Random Intercept,-443.4954157,0.787387171,FALSE
+sq,sqrt,inv_sqrt,Random Slope,-458.3720042,0.855195276,TRUE
+sq,sqrt,inv_sqrt,Random Slope + Intercept,-453.4188343,0.866359272,TRUE
+cub,sqrt,inv_sqrt,Random Intercept,-431.3475576,0.750243112,FALSE
+cub,sqrt,inv_sqrt,Random Slope,-432.7522822,0.999892189,TRUE
+cub,sqrt,inv_sqrt,Random Slope + Intercept,-435.8626594,0.986412669,TRUE
+identity,inv,inv_sqrt,Random Intercept,-465.3019625,0.850745973,FALSE
+identity,inv,inv_sqrt,Random Slope,-474.7080558,0.821753616,FALSE
+identity,inv,inv_sqrt,Random Slope + Intercept,-470.1830995,0.832893402,TRUE
+log,inv,inv_sqrt,Random Intercept,-477.1654271,0.863886108,FALSE
+log,inv,inv_sqrt,Random Slope,-483.2313165,0.802213537,TRUE
+log,inv,inv_sqrt,Random Slope + Intercept,-486.1587102,0.962576576,FALSE
+sqrt,inv,inv_sqrt,Random Intercept,-472.7911413,0.85969426,FALSE
+sqrt,inv,inv_sqrt,Random Slope,-480.5098069,0.81109873,TRUE
+sqrt,inv,inv_sqrt,Random Slope + Intercept,-477.2009705,0.864037554,TRUE
+inv,inv,inv_sqrt,Random Intercept,-487.2785112,0.858564323,FALSE
+inv,inv,inv_sqrt,Random Slope,-490.612396,0.781063108,TRUE
+inv,inv,inv_sqrt,Random Slope + Intercept,-493.3514603,0.967477823,TRUE
+inv_sqrt,inv,inv_sqrt,Random Intercept,-483.8494674,0.863351169,FALSE
+inv_sqrt,inv,inv_sqrt,Random Slope,-488.4319639,0.791910756,TRUE
+inv_sqrt,inv,inv_sqrt,Random Slope + Intercept,-491.2528361,0.963169045,TRUE
+sq,inv,inv_sqrt,Random Intercept,-451.3780746,0.820976279,FALSE
+sq,inv,inv_sqrt,Random Slope,-459.7530498,0.982116088,TRUE
+sq,inv,inv_sqrt,Random Slope + Intercept,-457.2415407,0.905673432,TRUE
+cub,inv,inv_sqrt,Random Intercept,-438.4307899,0.78314277,FALSE
+cub,inv,inv_sqrt,Random Slope,-438.9940225,0.999541024,TRUE
+cub,inv,inv_sqrt,Random Slope + Intercept,-440.6705755,0.884484698,TRUE
+identity,inv_sqrt,inv_sqrt,Random Intercept,-463.6708393,0.844114956,FALSE
+identity,inv_sqrt,inv_sqrt,Random Slope,-472.2625678,0.81138038,TRUE
+identity,inv_sqrt,inv_sqrt,Random Slope + Intercept,-468.4016429,0.84031627,TRUE
+log,inv_sqrt,inv_sqrt,Random Intercept,-475.264948,0.856794457,FALSE
+log,inv_sqrt,inv_sqrt,Random Slope,-482.2156121,0.800238031,TRUE
+log,inv_sqrt,inv_sqrt,Random Slope + Intercept,-486.0756204,0.961808543,TRUE
+sqrt,inv_sqrt,inv_sqrt,Random Intercept,-471.0213615,0.85293524,FALSE
+sqrt,inv_sqrt,inv_sqrt,Random Slope,-479.7355226,0.810466547,TRUE
+sqrt,inv_sqrt,inv_sqrt,Random Slope + Intercept,-475.9707128,0.849500332,TRUE
+inv,inv_sqrt,inv_sqrt,Random Intercept,-485.1971506,0.85031053,FALSE
+inv,inv_sqrt,inv_sqrt,Random Slope,-489.139719,0.776488609,TRUE
+inv,inv_sqrt,inv_sqrt,Random Slope + Intercept,-492.8776805,0.968819311,TRUE
+inv_sqrt,inv_sqrt,inv_sqrt,Random Intercept,-481.8411486,0.855739519,FALSE
+inv_sqrt,inv_sqrt,inv_sqrt,Random Slope,-487.1766617,0.788806444,TRUE
+inv_sqrt,inv_sqrt,inv_sqrt,Random Slope + Intercept,-490.957186,0.967516446,FALSE
+sq,inv_sqrt,inv_sqrt,Random Intercept,-450.0029692,0.814163636,FALSE
+sq,inv_sqrt,inv_sqrt,Random Slope,-463.2280285,0.878339613,TRUE
+sq,inv_sqrt,inv_sqrt,Random Slope + Intercept,-453.455933,0.977509439,TRUE
+cub,inv_sqrt,inv_sqrt,Random Intercept,-437.2528015,0.776085146,FALSE
+cub,inv_sqrt,inv_sqrt,Random Slope,-438.3927882,0.999705824,TRUE
+cub,inv_sqrt,inv_sqrt,Random Slope + Intercept,-433.754915,0.999403744,TRUE
+identity,sq,inv_sqrt,Random Intercept,-442.5064402,0.744665432,FALSE
+identity,sq,inv_sqrt,Random Slope,-451.9218809,0.701543474,FALSE
+identity,sq,inv_sqrt,Random Slope + Intercept,-462.3291993,0.957246316,TRUE
+log,sq,inv_sqrt,Random Intercept,-452.648002,0.755471615,FALSE
+log,sq,inv_sqrt,Random Slope,-460.627807,0.747038963,TRUE
+log,sq,inv_sqrt,Random Slope + Intercept,-470.1530877,0.971008589,TRUE
+sqrt,sq,inv_sqrt,Random Intercept,-449.0256137,0.752329529,FALSE
+sqrt,sq,inv_sqrt,Random Slope,-458.7735392,0.764963159,TRUE
+sqrt,sq,inv_sqrt,Random Slope + Intercept,-467.9334572,0.971913126,TRUE
+inv,sq,inv_sqrt,Random Intercept,-462.2222734,0.749254416,FALSE
+inv,sq,inv_sqrt,Random Slope,-466.9818732,0.695575732,FALSE
+inv,sq,inv_sqrt,Random Slope + Intercept,-472.9246701,0.892676376,TRUE
+inv_sqrt,sq,inv_sqrt,Random Intercept,-458.8937068,0.754184713,FALSE
+inv_sqrt,sq,inv_sqrt,Random Slope,-465.1869536,0.728564194,TRUE
+inv_sqrt,sq,inv_sqrt,Random Slope + Intercept,-474.3272518,0.942308297,TRUE
+sq,sq,inv_sqrt,Random Intercept,-430.67526,0.719179998,FALSE
+sq,sq,inv_sqrt,Random Slope,-444.6363215,0.802199628,TRUE
+sq,sq,inv_sqrt,Random Slope + Intercept,-449.9900548,0.975053678,TRUE
+cub,sq,inv_sqrt,Random Intercept,-419.4623138,0.689487476,FALSE
+cub,sq,inv_sqrt,Random Slope,-424.3390345,0.99942122,TRUE
+cub,sq,inv_sqrt,Random Slope + Intercept,-429.4005909,0.990427523,TRUE
+identity,cub,inv_sqrt,Random Intercept,-435.6336522,0.68878599,FALSE
+identity,cub,inv_sqrt,Random Slope,-444.1992492,0.667070371,TRUE
+identity,cub,inv_sqrt,Random Slope + Intercept,-455.025765,0.968516029,TRUE
+log,cub,inv_sqrt,Random Intercept,-445.4715855,0.699037917,FALSE
+log,cub,inv_sqrt,Random Slope,-451.9176266,0.711670653,TRUE
+log,cub,inv_sqrt,Random Slope + Intercept,-462.985706,0.963333202,TRUE
+sqrt,cub,inv_sqrt,Random Intercept,-441.9709486,0.695507833,FALSE
+sqrt,cub,inv_sqrt,Random Slope,-449.8511831,0.730807679,TRUE
+sqrt,cub,inv_sqrt,Random Slope + Intercept,-456.8016956,0.92362061,TRUE
+inv,cub,inv_sqrt,Random Intercept,-455.0167874,0.697056477,FALSE
+inv,cub,inv_sqrt,Random Slope,-458.8814338,0.675343047,FALSE
+inv,cub,inv_sqrt,Random Slope + Intercept,-465.9653139,0.898640338,TRUE
+inv_sqrt,cub,inv_sqrt,Random Intercept,-451.6684368,0.699368307,FALSE
+inv_sqrt,cub,inv_sqrt,Random Slope,-456.7581,0.692541425,TRUE
+inv_sqrt,cub,inv_sqrt,Random Slope + Intercept,-463.6136593,0.910377423,TRUE
+sq,cub,inv_sqrt,Random Intercept,-424.2418466,0.668764881,FALSE
+sq,cub,inv_sqrt,Random Slope,-435.6247696,0.785393391,TRUE
+sq,cub,inv_sqrt,Random Slope + Intercept,-438.577859,0.998810146,TRUE
+cub,cub,inv_sqrt,Random Intercept,-413.4180095,0.647207623,FALSE
+cub,cub,inv_sqrt,Random Slope,-417.6724073,0.99832951,TRUE
+cub,cub,inv_sqrt,Random Slope + Intercept,-420.972542,0.999250247,TRUE
+identity,identity,sq,Random Intercept,-428.8329767,0.815893813,FALSE
+identity,identity,sq,Random Slope,-437.1127863,0.777464215,TRUE
+identity,identity,sq,Random Slope + Intercept,-443.1937185,0.941933648,FALSE
+log,identity,sq,Random Intercept,-439.8848959,0.831270828,FALSE
+log,identity,sq,Random Slope,-446.4019759,0.782988477,TRUE
+log,identity,sq,Random Slope + Intercept,-451.9098136,0.969438142,TRUE
+sqrt,identity,sq,Random Intercept,-435.8411897,0.825984457,FALSE
+sqrt,identity,sq,Random Slope,-443.9421579,0.794882705,TRUE
+sqrt,identity,sq,Random Slope + Intercept,-449.6704584,0.969629497,TRUE
+inv,identity,sq,Random Intercept,-449.9011915,0.82806139,FALSE
+inv,identity,sq,Random Slope,-453.4876214,0.75670407,TRUE
+inv,identity,sq,Random Slope + Intercept,-458.6718344,0.961805394,TRUE
+inv_sqrt,identity,sq,Random Intercept,-446.4271754,0.831766151,FALSE
+inv_sqrt,identity,sq,Random Slope,-451.4081948,0.77001943,TRUE
+inv_sqrt,identity,sq,Random Slope + Intercept,-456.7569162,0.968132846,TRUE
+sq,identity,sq,Random Intercept,-416.0698147,0.784573423,FALSE
+sq,identity,sq,Random Slope,-424.3397486,0.939636321,FALSE
+sq,identity,sq,Random Slope + Intercept,-421.2078164,0.984687962,TRUE
+cub,identity,sq,Random Intercept,-404.2037471,0.747944246,FALSE
+cub,identity,sq,Random Slope,-406.160025,0.998609171,TRUE
+cub,identity,sq,Random Slope + Intercept,-401.5253948,0.997952186,TRUE
+identity,log,sq,Random Intercept,-435.3519928,0.843272942,FALSE
+identity,log,sq,Random Slope,-444.0458865,0.817661183,TRUE
+identity,log,sq,Random Slope + Intercept,-447.3464874,0.924238598,FALSE
+log,log,sq,Random Intercept,-447.0523511,0.858593938,FALSE
+log,log,sq,Random Slope,-452.5856906,0.800598859,TRUE
+log,log,sq,Random Slope + Intercept,-453.9593297,0.934979607,TRUE
+sqrt,log,sq,Random Intercept,-442.7171699,0.853296489,FALSE
+sqrt,log,sq,Random Slope,-449.8539443,0.810031403,TRUE
+sqrt,log,sq,Random Slope + Intercept,-454.3388368,0.966677295,TRUE
+inv,log,sq,Random Intercept,-457.3269456,0.855629676,FALSE
+inv,log,sq,Random Slope,-460.0575921,0.778056514,TRUE
+inv,log,sq,Random Slope + Intercept,-463.7144979,0.968545915,TRUE
+inv_sqrt,log,sq,Random Intercept,-453.7826692,0.859200243,FALSE
+inv_sqrt,log,sq,Random Slope,-457.8170494,0.789640839,TRUE
+inv_sqrt,log,sq,Random Slope + Intercept,-461.7219488,0.968433573,TRUE
+sq,log,sq,Random Intercept,-421.8570213,0.811788443,FALSE
+sq,log,sq,Random Slope,-428.907262,0.984281637,FALSE
+sq,log,sq,Random Slope + Intercept,-436.0905211,0.942211348,TRUE
+cub,log,sq,Random Intercept,-409.4156311,0.773745071,FALSE
+cub,log,sq,Random Slope,-412.9723022,0.981546426,TRUE
+cub,log,sq,Random Slope + Intercept,-406.8232361,0.998269724,TRUE
+identity,sqrt,sq,Random Intercept,-433.5168113,0.831275129,FALSE
+identity,sqrt,sq,Random Slope,-442.7914136,0.812332,TRUE
+identity,sqrt,sq,Random Slope + Intercept,-438.3470451,0.802819209,FALSE
+log,sqrt,sq,Random Intercept,-444.8918658,0.84659862,FALSE
+log,sqrt,sq,Random Slope,-451.0219534,0.792833762,TRUE
+log,sqrt,sq,Random Slope + Intercept,-454.5107544,0.952936313,TRUE
+sqrt,sqrt,sq,Random Intercept,-440.7046204,0.841340711,FALSE
+sqrt,sqrt,sq,Random Slope,-448.4416524,0.803535148,TRUE
+sqrt,sqrt,sq,Random Slope + Intercept,-453.5892031,0.968429389,TRUE
+inv,sqrt,sq,Random Intercept,-455.0241846,0.843333734,FALSE
+inv,sqrt,sq,Random Slope,-458.2570921,0.76836569,FALSE
+inv,sqrt,sq,Random Slope + Intercept,-462.6813012,0.967378481,TRUE
+inv_sqrt,sqrt,sq,Random Intercept,-451.5226787,0.847076884,FALSE
+inv_sqrt,sqrt,sq,Random Slope,-456.1204674,0.78075699,FALSE
+inv_sqrt,sqrt,sq,Random Slope + Intercept,-460.7316143,0.969003903,TRUE
+sq,sqrt,sq,Random Intercept,-420.3800388,0.799722992,FALSE
+sq,sqrt,sq,Random Slope,-431.9627732,0.82412672,TRUE
+sq,sqrt,sq,Random Slope + Intercept,-426.940259,0.856068371,TRUE
+cub,sqrt,sq,Random Intercept,-408.2187598,0.762112514,FALSE
+cub,sqrt,sq,Random Slope,-410.9125774,0.996355511,TRUE
+cub,sqrt,sq,Random Slope + Intercept,-409.4535297,0.932678674,TRUE
+identity,inv,sq,Random Intercept,-441.017864,0.856820032,FALSE
+identity,inv,sq,Random Slope,-447.9926158,0.816042568,FALSE
+identity,inv,sq,Random Slope + Intercept,-442.9869822,0.832792688,FALSE
+log,inv,sq,Random Intercept,-453.2619875,0.872364901,FALSE
+log,inv,sq,Random Slope,-457.3168274,0.808544951,TRUE
+log,inv,sq,Random Slope + Intercept,-459.9722897,0.962975932,FALSE
+sqrt,inv,sq,Random Intercept,-448.6659968,0.866804735,FALSE
+sqrt,inv,sq,Random Slope,-454.2440442,0.819422774,FALSE
+sqrt,inv,sq,Random Slope + Intercept,-450.8785742,0.866605806,TRUE
+inv,inv,sq,Random Intercept,-463.8851641,0.870723806,FALSE
+inv,inv,sq,Random Slope,-465.4378396,0.789792987,TRUE
+inv,inv,sq,Random Slope + Intercept,-466.1250234,0.957470287,TRUE
+inv_sqrt,inv,sq,Random Intercept,-460.2023874,0.873528641,FALSE
+inv_sqrt,inv,sq,Random Slope,-462.8871121,0.799611438,TRUE
+inv_sqrt,inv,sq,Random Slope + Intercept,-465.3321709,0.965242329,TRUE
+sq,inv,sq,Random Intercept,-426.9888044,0.825923645,FALSE
+sq,inv,sq,Random Slope,-434.1741526,0.955982476,TRUE
+sq,inv,sq,Random Slope + Intercept,-427.6905248,0.958224576,TRUE
+cub,inv,sq,Random Intercept,-414.1359992,0.788184972,FALSE
+cub,inv,sq,Random Slope,-424.7050664,0.822513271,TRUE
+cub,inv,sq,Random Slope + Intercept,-408.528192,0.663889411,TRUE
+identity,inv_sqrt,sq,Random Intercept,-439.7422031,0.85175582,FALSE
+identity,inv_sqrt,sq,Random Slope,-447.4201923,0.807499876,TRUE
+identity,inv_sqrt,sq,Random Slope + Intercept,-442.3601328,0.825665311,FALSE
+log,inv_sqrt,sq,Random Intercept,-451.7418174,0.867146894,FALSE
+log,inv_sqrt,sq,Random Slope,-456.550879,0.805841043,TRUE
+log,inv_sqrt,sq,Random Slope + Intercept,-460.0216205,0.965701468,TRUE
+sqrt,inv_sqrt,sq,Random Intercept,-447.2660649,0.861746248,FALSE
+sqrt,inv_sqrt,sq,Random Slope,-453.6497268,0.814244407,TRUE
+sqrt,inv_sqrt,sq,Random Slope + Intercept,-449.735433,0.853254788,TRUE
+inv,inv_sqrt,sq,Random Intercept,-462.1830985,0.864751654,FALSE
+inv,inv_sqrt,sq,Random Slope,-464.3265873,0.785581534,TRUE
+inv,inv_sqrt,sq,Random Slope + Intercept,-467.2460818,0.968629084,TRUE
+inv_sqrt,inv_sqrt,sq,Random Intercept,-458.5779306,0.868016113,FALSE
+inv_sqrt,inv_sqrt,sq,Random Slope,-461.9439842,0.795954924,TRUE
+inv_sqrt,inv_sqrt,sq,Random Slope + Intercept,-465.1220066,0.969883226,TRUE
+sq,inv_sqrt,sq,Random Intercept,-425.9395733,0.820523108,FALSE
+sq,inv_sqrt,sq,Random Slope,-432.0847056,0.953538039,FALSE
+sq,inv_sqrt,sq,Random Slope + Intercept,-428.6209093,0.890175138,TRUE
+cub,inv_sqrt,sq,Random Intercept,-413.2600936,0.782478126,FALSE
+cub,inv_sqrt,sq,Random Slope,-421.1908849,0.977832847,TRUE
+cub,inv_sqrt,sq,Random Slope + Intercept,-410.667784,0.973127197,TRUE
+identity,sq,sq,Random Intercept,-421.1177209,0.777088199,FALSE
+identity,sq,sq,Random Slope,-429.598253,0.734755876,TRUE
+identity,sq,sq,Random Slope + Intercept,-437.2962878,0.967344118,FALSE
+log,sq,sq,Random Intercept,-431.6091315,0.792612362,FALSE
+log,sq,sq,Random Slope,-438.1403134,0.757837195,TRUE
+log,sq,sq,Random Slope + Intercept,-445.0041721,0.965802115,TRUE
+sqrt,sq,sq,Random Intercept,-427.8095625,0.787073009,FALSE
+sqrt,sq,sq,Random Slope,-435.7816616,0.759615381,TRUE
+sqrt,sq,sq,Random Slope + Intercept,-442.663495,0.971242969,TRUE
+inv,sq,sq,Random Intercept,-441.4554469,0.790783639,FALSE
+inv,sq,sq,Random Slope,-445.2116358,0.724352045,TRUE
+inv,sq,sq,Random Slope + Intercept,-448.7381636,0.899983306,FALSE
+inv_sqrt,sq,sq,Random Intercept,-438.0111508,0.793654086,FALSE
+inv_sqrt,sq,sq,Random Slope,-443.104795,0.74310624,TRUE
+inv_sqrt,sq,sq,Random Slope + Intercept,-450.0010324,0.964845461,TRUE
+sq,sq,sq,Random Intercept,-409.0309935,0.747475146,FALSE
+sq,sq,sq,Random Slope,-420.1120383,0.852672801,TRUE
+sq,sq,sq,Random Slope + Intercept,-427.3050188,0.968706945,TRUE
+cub,sq,sq,Random Intercept,-397.7062451,0.714624025,FALSE
+cub,sq,sq,Random Slope,-398.2929062,0.999196381,TRUE
+cub,sq,sq,Random Slope + Intercept,-400.8416722,0.998050361,TRUE
+identity,cub,sq,Random Intercept,-414.7944865,0.733945989,FALSE
+identity,cub,sq,Random Slope,-422.6508968,0.714901306,TRUE
+identity,cub,sq,Random Slope + Intercept,-430.0184321,0.964184068,TRUE
+log,cub,sq,Random Intercept,-424.8880278,0.749486863,FALSE
+log,cub,sq,Random Slope,-430.6193413,0.727972761,TRUE
+log,cub,sq,Random Slope + Intercept,-433.996075,0.920027614,TRUE
+sqrt,cub,sq,Random Intercept,-421.261233,0.743536316,FALSE
+sqrt,cub,sq,Random Slope,-428.2141317,0.743653874,TRUE
+sqrt,cub,sq,Random Slope + Intercept,-435.7015207,0.970989627,TRUE
+inv,cub,sq,Random Intercept,-434.6114373,0.750443655,FALSE
+inv,cub,sq,Random Slope,-437.9714562,0.697934807,TRUE
+inv,cub,sq,Random Slope + Intercept,-442.0271503,0.904874523,TRUE
+inv_sqrt,cub,sq,Random Intercept,-431.1903556,0.751638373,FALSE
+inv_sqrt,cub,sq,Random Slope,-435.7012283,0.712594393,FALSE
+inv_sqrt,cub,sq,Random Slope + Intercept,-439.9341375,0.913472804,TRUE
+sq,cub,sq,Random Intercept,-403.1940856,0.707605866,FALSE
+sq,cub,sq,Random Slope,-412.8021416,0.799062861,TRUE
+sq,cub,sq,Random Slope + Intercept,-413.9205438,0.998927726,TRUE
+cub,cub,sq,Random Intercept,-392.2606902,0.680316801,FALSE
+cub,cub,sq,Random Slope,-398.3489753,0.978560361,TRUE
+cub,cub,sq,Random Slope + Intercept,-399.9591736,0.999102346,TRUE
+identity,identity,cub,Random Intercept,-416.0150405,0.805933101,FALSE
+identity,identity,cub,Random Slope,-424.0771268,0.768276329,FALSE
+identity,identity,cub,Random Slope + Intercept,-431.7671404,0.964189836,FALSE
+log,identity,cub,Random Intercept,-426.9984015,0.821906872,FALSE
+log,identity,cub,Random Slope,-433.513193,0.770162213,TRUE
+log,identity,cub,Random Slope + Intercept,-439.2279525,0.969389748,TRUE
+sqrt,identity,cub,Random Intercept,-422.9929851,0.816541227,FALSE
+sqrt,identity,cub,Random Slope,-431.0907579,0.783022619,TRUE
+sqrt,identity,cub,Random Slope + Intercept,-436.211377,0.960502638,TRUE
+inv,identity,cub,Random Intercept,-436.9291246,0.817659265,FALSE
+inv,identity,cub,Random Slope,-440.5392522,0.741155115,TRUE
+inv,identity,cub,Random Slope + Intercept,-445.9650962,0.965570485,TRUE
+inv_sqrt,identity,cub,Random Intercept,-433.4978301,0.822063992,FALSE
+inv_sqrt,identity,cub,Random Slope,-438.4862719,0.755872936,FALSE
+inv_sqrt,identity,cub,Random Slope + Intercept,-444.0388638,0.969240179,TRUE
+sq,identity,cub,Random Intercept,-403.2861034,0.772394823,FALSE
+sq,identity,cub,Random Slope,-415.0862427,0.804687999,TRUE
+sq,identity,cub,Random Slope + Intercept,-421.1370464,0.956578734,TRUE
+cub,identity,cub,Random Intercept,-391.4318435,0.732625775,FALSE
+cub,identity,cub,Random Slope,-388.9891718,0.999870771,TRUE
+cub,identity,cub,Random Slope + Intercept,-389.4603422,0.997568208,TRUE
+identity,log,cub,Random Intercept,-422.3908696,0.835332222,FALSE
+identity,log,cub,Random Slope,-431.182627,0.80304532,TRUE
+identity,log,cub,Random Slope + Intercept,-433.7880186,0.92491007,FALSE
+log,log,cub,Random Intercept,-433.994381,0.851143969,FALSE
+log,log,cub,Random Slope,-439.6023338,0.788180728,TRUE
+log,log,cub,Random Slope + Intercept,-440.9638037,0.933024371,TRUE
+sqrt,log,cub,Random Intercept,-429.7141176,0.845804333,FALSE
+sqrt,log,cub,Random Slope,-436.9337264,0.798838418,TRUE
+sqrt,log,cub,Random Slope + Intercept,-441.5183538,0.966253583,FALSE
+inv,log,cub,Random Intercept,-444.1418999,0.847146614,FALSE
+inv,log,cub,Random Slope,-446.9580765,0.763106883,FALSE
+inv,log,cub,Random Slope + Intercept,-450.7215579,0.967993456,FALSE
+inv_sqrt,log,cub,Random Intercept,-440.6617191,0.85140662,FALSE
+inv_sqrt,log,cub,Random Slope,-444.7727416,0.776080386,TRUE
+inv_sqrt,log,cub,Random Slope + Intercept,-448.7817785,0.96807986,FALSE
+sq,log,cub,Random Intercept,-408.9388464,0.801784422,FALSE
+sq,log,cub,Random Slope,-416.7925134,0.965291991,FALSE
+sq,log,cub,Random Slope + Intercept,-416.5941826,0.882947075,TRUE
+cub,log,cub,Random Intercept,-396.5064316,0.760593328,FALSE
+cub,log,cub,Random Slope,-392.392623,0.999902102,TRUE
+cub,log,cub,Random Slope + Intercept,-394.6015042,0.997208875,TRUE
+identity,sqrt,cub,Random Intercept,-420.6106943,0.822375256,FALSE
+identity,sqrt,cub,Random Slope,-429.9379805,0.801583084,TRUE
+identity,sqrt,cub,Random Slope + Intercept,-421.2270065,0.811060818,FALSE
+log,sqrt,cub,Random Intercept,-431.9016322,0.838243024,FALSE
+log,sqrt,cub,Random Slope,-438.0673884,0.78024001,TRUE
+log,sqrt,cub,Random Slope + Intercept,-443.0769923,0.968553746,TRUE
+sqrt,sqrt,cub,Random Intercept,-427.7615252,0.832925605,FALSE
+sqrt,sqrt,cub,Random Slope,-435.5375126,0.792066122,TRUE
+sqrt,sqrt,cub,Random Slope + Intercept,-440.8379663,0.968186386,TRUE
+inv,sqrt,cub,Random Intercept,-441.9279157,0.833930724,FALSE
+inv,sqrt,cub,Random Slope,-445.214814,0.751999748,TRUE
+inv,sqrt,cub,Random Slope + Intercept,-449.7846642,0.965825279,TRUE
+inv_sqrt,sqrt,cub,Random Intercept,-438.4794452,0.838376218,FALSE
+inv_sqrt,sqrt,cub,Random Slope,-443.1189895,0.767060191,TRUE
+inv_sqrt,sqrt,cub,Random Slope + Intercept,-447.8852172,0.968792878,FALSE
+sq,sqrt,cub,Random Intercept,-407.5146739,0.788667506,FALSE
+sq,sqrt,cub,Random Slope,-413.9002461,0.979963693,TRUE
+sq,sqrt,cub,Random Slope + Intercept,-411.9153208,0.920800436,TRUE
+cub,sqrt,cub,Random Intercept,-395.3657263,0.74788627,FALSE
+cub,sqrt,cub,Random Slope,-389.5575987,0.999969803,TRUE
+cub,sqrt,cub,Random Slope + Intercept,-390.7443116,0.999186699,TRUE
+identity,inv,cub,Random Intercept,-428.0631346,0.850411441,FALSE
+identity,inv,cub,Random Slope,-435.3562186,0.817123887,FALSE
+identity,inv,cub,Random Slope + Intercept,-429.3337036,0.83047808,FALSE
+log,inv,cub,Random Intercept,-440.201577,0.866346789,FALSE
+log,inv,cub,Random Slope,-444.3919972,0.796675085,TRUE
+log,inv,cub,Random Slope + Intercept,-447.059968,0.962279174,TRUE
+sqrt,inv,cub,Random Intercept,-435.6683911,0.860772003,FALSE
+sqrt,inv,cub,Random Slope,-441.402006,0.809187473,FALSE
+sqrt,inv,cub,Random Slope + Intercept,-437.9985397,0.860963798,TRUE
+inv,inv,cub,Random Intercept,-450.6624474,0.8637404,FALSE
+inv,inv,cub,Random Slope,-452.3460178,0.775593937,TRUE
+inv,inv,cub,Random Slope + Intercept,-454.543437,0.967266736,FALSE
+inv_sqrt,inv,cub,Random Intercept,-447.0641428,0.867184357,FALSE
+inv_sqrt,inv,cub,Random Slope,-449.877644,0.786567294,TRUE
+inv_sqrt,inv,cub,Random Slope + Intercept,-452.3343797,0.964449336,FALSE
+sq,inv,cub,Random Intercept,-414.0641945,0.817670242,FALSE
+sq,inv,cub,Random Slope,-423.8300115,0.817501227,TRUE
+sq,inv,cub,Random Slope + Intercept,-417.2704048,0.819425842,TRUE
+cub,inv,cub,Random Intercept,-401.2006466,0.776933883,FALSE
+cub,inv,cub,Random Slope,-401.3501394,0.929853535,TRUE
+cub,inv,cub,Random Slope + Intercept,-393.0857645,0.999151659,TRUE
+identity,inv_sqrt,cub,Random Intercept,-426.7647627,0.844647653,FALSE
+identity,inv_sqrt,cub,Random Slope,-434.847996,0.808927878,TRUE
+identity,inv_sqrt,cub,Random Slope + Intercept,-428.8690369,0.821424558,FALSE
+log,inv_sqrt,cub,Random Intercept,-438.6598206,0.860477355,FALSE
+log,inv_sqrt,cub,Random Slope,-443.5779814,0.793685702,TRUE
+log,inv_sqrt,cub,Random Slope + Intercept,-440.9602024,0.871874365,TRUE
+sqrt,inv_sqrt,cub,Random Intercept,-434.2445266,0.85504928,FALSE
+sqrt,inv_sqrt,cub,Random Slope,-440.751155,0.803260289,TRUE
+sqrt,inv_sqrt,cub,Random Slope + Intercept,-444.4951518,0.963490314,FALSE
+inv,inv_sqrt,cub,Random Intercept,-448.9544601,0.857079211,FALSE
+inv,inv_sqrt,cub,Random Slope,-451.2101796,0.770582871,FALSE
+inv,inv_sqrt,cub,Random Slope + Intercept,-454.1868906,0.968346207,TRUE
+inv_sqrt,inv_sqrt,cub,Random Intercept,-445.4242782,0.860986451,FALSE
+inv_sqrt,inv_sqrt,cub,Random Slope,-448.8971834,0.782675591,TRUE
+inv_sqrt,inv_sqrt,cub,Random Slope + Intercept,-452.1478271,0.966700372,TRUE
+sq,inv_sqrt,cub,Random Intercept,-413.0016331,0.811459571,FALSE
+sq,inv_sqrt,cub,Random Slope,-419.5813518,0.981747316,TRUE
+sq,inv_sqrt,cub,Random Slope + Intercept,-415.988183,0.898847403,TRUE
+cub,inv_sqrt,cub,Random Intercept,-400.3233371,0.770330054,FALSE
+cub,inv_sqrt,cub,Random Slope,-399.3629824,0.999309602,TRUE
+cub,inv_sqrt,cub,Random Slope + Intercept,-397.5567542,0.990746287,TRUE
+identity,sq,cub,Random Intercept,-408.5374244,0.76490972,FALSE
+identity,sq,cub,Random Slope,-414.9808478,0.754286124,TRUE
+identity,sq,cub,Random Slope + Intercept,-424.076197,0.9545178,TRUE
+log,sq,cub,Random Intercept,-418.9918181,0.781112398,FALSE
+log,sq,cub,Random Slope,-425.4674142,0.744428584,TRUE
+log,sq,cub,Random Slope + Intercept,-432.6589764,0.969637962,TRUE
+sqrt,sq,cub,Random Intercept,-415.2135107,0.775451328,FALSE
+sqrt,sq,cub,Random Slope,-423.135192,0.759665825,TRUE
+sqrt,sq,cub,Random Slope + Intercept,-430.3306512,0.971362649,TRUE
+inv,sq,cub,Random Intercept,-428.7872473,0.778349615,FALSE
+inv,sq,cub,Random Slope,-432.5224922,0.71223473,TRUE
+inv,sq,cub,Random Slope + Intercept,-436.8679385,0.902056337,TRUE
+inv_sqrt,sq,cub,Random Intercept,-425.3688557,0.781860929,FALSE
+inv_sqrt,sq,cub,Random Slope,-430.4205757,0.728329199,TRUE
+inv_sqrt,sq,cub,Random Slope + Intercept,-437.6072179,0.968251131,TRUE
+sq,sq,cub,Random Intercept,-396.4661183,0.733082901,FALSE
+sq,sq,cub,Random Slope,-406.998503,0.89370152,TRUE
+sq,sq,cub,Random Slope + Intercept,-414.6267844,0.959873615,TRUE
+cub,sq,cub,Random Intercept,-385.1452502,0.697326676,FALSE
+cub,sq,cub,Random Slope,-385.4197363,0.999428234,TRUE
+cub,sq,cub,Random Slope + Intercept,-386.1861428,0.999506065,TRUE
+identity,cub,cub,Random Intercept,-402.4674246,0.719870083,FALSE
+identity,cub,cub,Random Slope,-410.0107105,0.688142419,TRUE
+identity,cub,cub,Random Slope + Intercept,-418.0922888,0.964569445,TRUE
+log,cub,cub,Random Intercept,-412.5487094,0.736121469,FALSE
+log,cub,cub,Random Slope,-418.2116881,0.714024406,TRUE
+log,cub,cub,Random Slope + Intercept,-424.8572259,0.936912265,TRUE
+sqrt,cub,cub,Random Intercept,-408.9301566,0.730012821,FALSE
+sqrt,cub,cub,Random Slope,-415.8098997,0.730558977,TRUE
+sqrt,cub,cub,Random Slope + Intercept,-423.7580072,0.973524918,TRUE
+inv,cub,cub,Random Intercept,-422.2462532,0.736329402,FALSE
+inv,cub,cub,Random Slope,-425.5666836,0.681093493,FALSE
+inv,cub,cub,Random Slope + Intercept,-429.6599524,0.902709621,TRUE
+inv_sqrt,cub,cub,Random Intercept,-418.8391587,0.738053039,FALSE
+inv_sqrt,cub,cub,Random Slope,-423.2930215,0.69726316,TRUE
+inv_sqrt,cub,cub,Random Slope + Intercept,-427.5098525,0.916632069,TRUE
+sq,cub,cub,Random Intercept,-390.8652654,0.691482897,FALSE
+sq,cub,cub,Random Slope,-400.2616324,0.726404569,TRUE
+sq,cub,cub,Random Slope + Intercept,-408.3519443,0.97803707,TRUE
+cub,cub,cub,Random Intercept,-379.9263299,0.661667504,FALSE
+cub,cub,cub,Random Slope,-384.9213146,0.983092927,TRUE
+cub,cub,cub,Random Slope + Intercept,-384.6680527,0.999180927,TRUE
