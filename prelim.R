@@ -253,7 +253,7 @@ ldmc_chl_plot <- ggplot(traits, aes(y = LDMC, x = CHL)) +
 ## LMA vs CHL----
 lma_chl_sma <- smatr::sma(LMA ~ CHL * species, log = "XY",
                            method = "SMA",
-                           data = traits)
+                          data = traits)
 summary(lma_chl_sma)
 
 lma_chl_plot <- ggplot(traits, aes(y = LMA, x = CHL)) +
@@ -278,88 +278,13 @@ lma_chl_plot <- ggplot(traits, aes(y = LMA, x = CHL)) +
     shape = guide_legend("Species", override.aes = list(size = 4))
   ) + custom_theme
 
-## Phi_PS2 vs LDMC----
-phi_ps2_ldmc_sma <- smatr::sma(Phi_PS2 ~ LDMC * species, log="XY",
-                               method = "SMA", data = traits)
-summary(phi_ps2_ldmc_sma, method = "SMA")
-
-phi_ps2_ldmc_plot <- ggplot(traits, aes(x = LDMC, y = Phi_PS2)) +
-  geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
-  stat_ma_line(aes(color = species), method = "SMA", se=F) +
-  scale_color_manual(values = josef_colors, name = "Species") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Species") +
-  labs(x = label_units[["LDMC"]], y = label_units[["Phi_PS2"]]) +  # Use proper units or descriptions
-  theme_classic() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    axis.text.x = element_text(size = 12),
-    axis.text.y = element_text(size = 12),
-    aspect.ratio = 1,
-    legend.position = "bottom"
-  ) +
-  guides(
-    color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
-    shape = guide_legend("Species", override.aes = list(size = 4))
-  ) + custom_theme
-
-## Phi_PS2 vs LMA----
-phi_ps2_lma_sma <- smatr::sma(Phi_PS2 ~ LMA * species, log="XY",
-                              method = "SMA", data = traits)
-summary(phi_ps2_lma_sma)
-
-phi_ps2_lma_plot <- ggplot(traits, aes(x = LMA, y = Phi_PS2)) +
-  geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
-  stat_ma_line(aes(color = species), method = "SMA", se=F) +
-  scale_color_manual(values = josef_colors, name = "Species") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Species") +
-  labs(x = label_units[["LMA"]], y = label_units[["Phi_PS2"]]) +
-  theme_classic() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    axis.text.x = element_text(size = 12),
-    axis.text.y = element_text(size = 12),
-    aspect.ratio = 1,
-    legend.position = "bottom"
-  ) +
-  guides(
-    color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
-    shape = guide_legend("Species", override.aes = list(size = 4))
-  ) + custom_theme
-
-
-## Phi_PS2 vs CHL----
-phi_ps2_chl_sma <- smatr::sma(Phi_PS2 ~ CHL * species, method = "SMA", data = traits)
-summary(phi_ps2_chl_sma)
-
-phi_ps2_chl_plot <- ggplot(traits, aes(x = CHL, y = Phi_PS2)) +
-  geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
-  stat_ma_line(aes(color = species), method = "SMA", se=F) +
-  scale_color_manual(values = josef_colors, name = "Species") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Species") +
-  labs(x = label_units[["CHL"]], y = label_units[["Phi_PS2"]]) +
-  theme_classic() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    axis.text.x = element_text(size = 12),
-    axis.text.y = element_text(size = 12),
-    aspect.ratio = 1,
-    legend.position = "bottom"
-  ) +
-  guides(
-    color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
-    shape = guide_legend("Species", override.aes = list(size = 4))
-  ) + custom_theme
 
 # Apply ggarrange and save as figure 3.
 # Combine all plots
 figure3_regression_plot <- ggarrange(
   lma_ldmc_plot, ldmc_chl_plot, lma_chl_plot,
-  phi_ps2_lma_plot, phi_ps2_ldmc_plot, phi_ps2_chl_plot,
-  ncol = 3, nrow = 2,  # 2 rows, 3 columns
-  labels = c("a", "b", "c", "d", "e", "f"),  # Subplot labels
+  ncol = 3, nrow = 1,  # 2 rows, 3 columns
+  labels = c("a", "b", "c"),  # Subplot labels
   common.legend = TRUE,  # Combine legends
   legend = "bottom"  # Legend at the bottom
 )
