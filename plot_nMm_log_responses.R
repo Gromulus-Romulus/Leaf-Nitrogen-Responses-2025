@@ -30,15 +30,29 @@ traits$species <- factor(traits$species,
                                     "B. officinalis",
                                     "H. vulgare"))
 
-# Compute growth rate per day
-growth_period_days <- 6 * 7  # 6-week experiment
-traits$GRT <- traits$dry_whole_g /
-  growth_period_days
-
+# Convert to proper units
+# In dataset, LMA is in g/m^2, LDMC in mg/g, CHL in µg/cm^2, and GRT in g/day
+# Want:
+# LMA in g/m^2 -> kg/m^2
+# LDMC in mg/g -> the same
+# CHL in µg/cm^2 -> mg/m^2
 # Filter only by traits of interest
 traits <- traits %>% select(
-  species, LDMC, LMA, CHL, GRT, treatment_mmol
+  species, LDMC, LMA, CHL, dry_whole_g, treatment_mmol
   )
+
+# Define growth period
+growth_period_days <- 6 * 7  # 6-week experiment (42 days)
+
+# Convert units and compute growth rate
+traits <- traits %>%
+  select(species, LDMC, LMA, CHL, treatment_mmol, dry_whole_g) %>%
+  mutate(
+    LMA = LMA / 1000,  # Convert g/m² to kg/m²
+    CHL = CHL * 10,     # Convert µg/cm² to mg/m²
+    GRT = dry_whole_g / growth_period_days  # Compute growth rate per day
+  ) %>%
+  select(-dry_whole_g)  # Remove intermediate variable if not needed
 
 # Styles ----
 # Display first rows of the dataset
@@ -70,10 +84,10 @@ josef_colors <- c("R. sativus" = "#299680", "B. officinalis" = "#7570b2", "H. vu
 
 # Define units for variables with LaTeX formatting
 label_units <- list(
-  "LDMC" = expression("LDMC"~"("*mg~g^-1*")"),
-  "LMA" = expression("LMA"~"("*g~m^-2*")"),
-  "CHL" = expression("CHL"~"("*mu*g~cm^-2*")"),
-  "treatment_mmol" = "Nitrogen (mM)"  # Treatment nitrogen label remains unchanged
+  "LDMC" = expression("LDMC"~"("*mg~g^-1*")"),  # No change
+  "LMA" = expression("LMA"~"("*kg~m^-2*")"),  # Converted from g/m² (measured) to kg/m²
+  "CHL" = expression("CHL"~"("*mg~m^-2*")"),  # Converted from µg/cm² (estimated) to mg/m²
+  "treatment_mmol" = "Nitrogen (mM)"  # No change
 )
 
 # Import Data ----

@@ -14,19 +14,88 @@ library(factoextra)
 
 # Import Data ----
 # REMINDER: Set Working Directory -> Source File Location
-# Define factor levels as species
-traits <-  read_csv("./data/traits.csv")
-traits$species <- factor(traits$species,
-                         levels=c("R. sativus", "B. officinalis", "H. vulgare"))
+# Import data
+traits <- read_csv("./data/traits.csv")
 
-# Calculate rate of growth
-growth_period_days <- 6 * 7 # 6 week experiment
-traits$GRT <- (traits$dry_whole_g / growth_period_days)
+# Ensure species is a factor
+traits$species <- factor(traits$species, 
+                         levels = c("R. sativus",
+                                    "B. officinalis",
+                                    "H. vulgare"))
 
-# Filter by metrics of interest only
+# Convert to proper units
+# In dataset, LMA is in g/m^2, LDMC in mg/g, CHL in µg/cm^2, and GRT in g/day
+# Want:
+# LMA in g/m^2 -> kg/m^2
+# LDMC in mg/g -> the same
+# CHL in µg/cm^2 -> mg/m^2
+# Filter only by traits of interest
+traits <- traits %>% select(
+  species, LDMC, LMA, CHL, dry_whole_g, treatment_mmol
+)
+
+# Define growth period
+growth_period_days <- 6 * 7  # 6-week experiment (42 days)
+
+# Convert to proper units
+# In dataset, LMA is in g/m^2, LDMC in mg/g, CHL in µg/cm^2, and GRT in g/day
+# Want:
+# LMA in g/m^2 -> kg/m^2
+# LDMC in mg/g -> the same
+# CHL in µg/cm^2 -> mg/m^2
+# Filter only by traits of interest
+traits <- traits %>% select(
+  species, LDMC, LMA, CHL, dry_whole_g, treatment_mmol
+)
+
+# Define growth period
+growth_period_days <- 6 * 7  # 6-week experiment (42 days)
+
+# Convert units and compute growth rate
 traits <- traits %>%
-  select(barcodeID, species, treatment_mmol,
-         LDMC, LMA, CHL, area_cm2, GRT)
+  select(species, LDMC, LMA, CHL, treatment_mmol, dry_whole_g) %>%
+  mutate(
+    LMA = LMA / 1000,  # Convert g/m² to kg/m²
+    CHL = CHL * 10,     # Convert µg/cm² to mg/m²
+    GRT = dry_whole_g / growth_period_days  # Compute growth rate per day
+  ) %>%
+  select(-dry_whole_g)  # Remove intermediate variable if not needed
+
+# Styles ----
+# Display first rows of the dataset
+# Define consistent font size
+base_font_size <- 12
+
+# Define a custom theme for all plots
+custom_theme <- theme_classic() +  # Base theme
+  theme(
+    # Text and font styling
+    text = element_text(family = "sans", size = base_font_size),
+    axis.text = element_text(size = 9),  
+    legend.position = "bottom",
+    
+    # Title - left justified, 12 point font, bold
+    plot.title = element_text(size = base_font_size, hjust = 0.5),
+    
+    # Aspect ratio 1:1
+    aspect.ratio = 1,
+    
+    # Panel and grid styling
+    panel.grid.major = element_line(color = "grey80", linetype = "dashed", linewidth = 0.1),  
+    panel.grid.minor = element_blank(),  # No minor grid lines
+    panel.background = element_rect(fill = "white", color = NA),  # White background
+  )
+
+# Custom colors advised by J. Garen
+josef_colors <- c("R. sativus" = "#299680", "B. officinalis" = "#7570b2", "H. vulgare" = "#ca621c")
+
+# Define units for variables with LaTeX formatting
+label_units <- list(
+  "LDMC" = expression("LDMC"~"("*mg~g^-1*")"),  # No change
+  "LMA" = expression("LMA"~"("*kg~m^-2*")"),  # Converted from g/m² (measured) to kg/m²
+  "CHL" = expression("CHL"~"("*mg~m^-2*")"),  # Converted from µg/cm² (estimated) to mg/m²
+  "treatment_mmol" = "Nitrogen (mM)"  # No change
+)
 
 # Log-Log Trait Regressions ----
 # 2) Show pairwise responses of LDMC, LMA, CHL, and area_cm2 using glms (log-log sma)
@@ -119,98 +188,98 @@ lma_chl_plot <- ggplot(traits, aes(y = LMA, x = CHL)) +
     shape = guide_legend("Species", override.aes = list(size = 4))
   ) + custom_theme
 
-## area_cm2 vs LDMC----
-leaf_area_ldmc_sma <- smatr::sma(area_cm2 ~ LDMC * species, log="XY",
-                               method = "SMA", data = traits)
-summary(leaf_area_ldmc_sma, method = "SMA")
-
-leaf_area_ldmc_plot <- ggplot(traits, aes(x = LDMC, y = area_cm2)) +
-  geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
-  stat_ma_line(aes(color = species), method = "SMA", se=F) +
-  scale_color_manual(values = josef_colors, name = "Species") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Species") +
-  labs(x = label_units[["LDMC"]], y = label_units[["area_cm2"]]) +  # Use proper units or descriptions
-  theme_classic() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    axis.text.x = element_text(size = 12),
-    axis.text.y = element_text(size = 12),
-    aspect.ratio = 1,
-    legend.position = "bottom"
-  ) +
-  guides(
-    color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
-    shape = guide_legend("Species", override.aes = list(size = 4))
-  ) + custom_theme
-
-## area_cm2 vs LMA----
-leaf_area_lma_sma <- smatr::sma(area_cm2 ~ LMA * species, log="XY",
-                              method = "SMA", data = traits)
-summary(leaf_area_lma_sma)
-
-leaf_area_lma_plot <- ggplot(traits, aes(x = LMA, y = area_cm2)) +
-  geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
-  stat_ma_line(aes(color = species), method = "SMA", se=F) +
-  scale_color_manual(values = josef_colors, name = "Species") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Species") +
-  labs(x = label_units[["LMA"]], y = label_units[["area_cm2"]]) +
-  theme_classic() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    axis.text.x = element_text(size = 12),
-    axis.text.y = element_text(size = 12),
-    aspect.ratio = 1,
-    legend.position = "bottom"
-  ) +
-  guides(
-    color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
-    shape = guide_legend("Species", override.aes = list(size = 4))
-  ) + custom_theme
-
-
-## area_cm2 vs CHL----
-leaf_area_chl_sma <- smatr::sma(area_cm2 ~ CHL * species, method = "SMA", data = traits)
-summary(leaf_area_chl_sma)
-
-leaf_area_chl_plot <- ggplot(traits, aes(x = CHL, y = area_cm2)) +
-  geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
-  stat_ma_line(aes(color = species), method = "SMA", se=F) +
-  scale_color_manual(values = josef_colors, name = "Species") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Species") +
-  labs(x = label_units[["CHL"]], y = label_units[["area_cm2"]]) +
-  theme_classic() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    axis.text.x = element_text(size = 12),
-    axis.text.y = element_text(size = 12),
-    aspect.ratio = 1,
-    legend.position = "bottom"
-  ) +
-  guides(
-    color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
-    shape = guide_legend("Species", override.aes = list(size = 4))
-  ) + custom_theme
-
-# Apply ggarrange and save as figure 3.
-# Combine all plots
+# ## area_cm2 vs LDMC----
+# leaf_area_ldmc_sma <- smatr::sma(area_cm2 ~ LDMC * species, log="XY",
+#                                method = "SMA", data = traits)
+# summary(leaf_area_ldmc_sma, method = "SMA")
+# 
+# leaf_area_ldmc_plot <- ggplot(traits, aes(x = LDMC, y = area_cm2)) +
+#   geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
+#   stat_ma_line(aes(color = species), method = "SMA", se=F) +
+#   scale_color_manual(values = josef_colors, name = "Species") +
+#   scale_shape_manual(values = c(16, 17, 18), name = "Species") +
+#   labs(x = label_units[["LDMC"]], y = label_units[["area_cm2"]]) +  # Use proper units or descriptions
+#   theme_classic() +
+#   theme(
+#     axis.title.x = element_text(size = 14),
+#     axis.title.y = element_text(size = 14),
+#     axis.text.x = element_text(size = 12),
+#     axis.text.y = element_text(size = 12),
+#     aspect.ratio = 1,
+#     legend.position = "bottom"
+#   ) +
+#   guides(
+#     color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
+#     shape = guide_legend("Species", override.aes = list(size = 4))
+#   ) + custom_theme
+# 
+# ## area_cm2 vs LMA----
+# leaf_area_lma_sma <- smatr::sma(area_cm2 ~ LMA * species, log="XY",
+#                               method = "SMA", data = traits)
+# summary(leaf_area_lma_sma)
+# 
+# leaf_area_lma_plot <- ggplot(traits, aes(x = LMA, y = area_cm2)) +
+#   geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
+#   stat_ma_line(aes(color = species), method = "SMA", se=F) +
+#   scale_color_manual(values = josef_colors, name = "Species") +
+#   scale_shape_manual(values = c(16, 17, 18), name = "Species") +
+#   labs(x = label_units[["LMA"]], y = label_units[["area_cm2"]]) +
+#   theme_classic() +
+#   theme(
+#     axis.title.x = element_text(size = 14),
+#     axis.title.y = element_text(size = 14),
+#     axis.text.x = element_text(size = 12),
+#     axis.text.y = element_text(size = 12),
+#     aspect.ratio = 1,
+#     legend.position = "bottom"
+#   ) +
+#   guides(
+#     color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
+#     shape = guide_legend("Species", override.aes = list(size = 4))
+#   ) + custom_theme
+# 
+# 
+# ## area_cm2 vs CHL----
+# leaf_area_chl_sma <- smatr::sma(area_cm2 ~ CHL * species, method = "SMA", data = traits)
+# summary(leaf_area_chl_sma)
+# 
+# leaf_area_chl_plot <- ggplot(traits, aes(x = CHL, y = area_cm2)) +
+#   geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +
+#   stat_ma_line(aes(color = species), method = "SMA", se=F) +
+#   scale_color_manual(values = josef_colors, name = "Species") +
+#   scale_shape_manual(values = c(16, 17, 18), name = "Species") +
+#   labs(x = label_units[["CHL"]], y = label_units[["area_cm2"]]) +
+#   theme_classic() +
+#   theme(
+#     axis.title.x = element_text(size = 14),
+#     axis.title.y = element_text(size = 14),
+#     axis.text.x = element_text(size = 12),
+#     axis.text.y = element_text(size = 12),
+#     aspect.ratio = 1,
+#     legend.position = "bottom"
+#   ) +
+#   guides(
+#     color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
+#     shape = guide_legend("Species", override.aes = list(size = 4))
+#   ) + custom_theme
+# 
+# # Apply ggarrange and save as figure 3.
+# # Combine all plots
 figure3_regression_plot <- ggarrange(
   lma_ldmc_plot, ldmc_chl_plot, lma_chl_plot,
-  leaf_area_lma_plot, leaf_area_ldmc_plot, leaf_area_chl_plot,
-  ncol = 3, nrow = 2,  # 2 rows, 3 columns
-  labels = c("a", "b", "c", "d", "e", "f"),  # Subplot labels
+#   leaf_area_lma_plot, leaf_area_ldmc_plot, leaf_area_chl_plot,
+  ncol = 3, nrow = 1,  # 2 rows, 3 columns
+  labels = c("a", "b", "c"), #"d", "e", "f"),  # Subplot labels
   common.legend = TRUE,  # Combine legends
   legend = "bottom"  # Legend at the bottom
 )
 
-# Print to console
-print(figure3_regression_plot)
-
-# Save the figure
+# # Print to console
+# print(figure3_regression_plot)
+# 
+# # Save the figure
 ggsave(
   filename = "./figures/prelim/figure3_regression_plots.png",
   plot = figure3_regression_plot,
-  width = 10, height = 7.5  # Adjust width and height for layout
+  width = 10, height = 5  # Adjust width and height for layout
 )
