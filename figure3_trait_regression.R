@@ -93,7 +93,7 @@ josef_colors <- c("R. sativus" = "#299680", "B. officinalis" = "#7570b2", "H. vu
 label_units <- list(
   "LDMC" = expression("LDMC"~"("*mg~g^-1*")"),  # No change
   "LMA" = expression("LMA"~"("*kg~m^-2*")"),  # Converted from g/m² (measured) to kg/m²
-  "CHL" = expression("Chlorophyll"~"("*mg~m^-2*")"),  # Converted from µg/cm² (estimated) to mg/m²
+  "CHL" = expression("Chlorophyll content"~"("*mg~m^-2*")"),  # Converted from µg/cm² (estimated) to mg/m²
   "treatment_mmol" = "Nitrogen (mM)"  # No change
 )
 
