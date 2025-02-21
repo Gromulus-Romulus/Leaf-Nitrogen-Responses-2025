@@ -103,61 +103,67 @@ traits <- traits %>%
      CHL_trans = I(CHL)
 )
 
-# Create an empty list to store plots
-plots <- list()
+# Load necessary libraries
+library(lme4)
+library(ggplot2)
+library(ggpubr)
 
-# Iterate over traits and fit models accordingly
-for (trait in traits_of_interest) {
-  
-  # Determine the trait name and formula
-  formula <- as.formula(paste(trait, "~ treatment_mmol + (1 | species)"))
-  
-  # Fit the mixed-effects model using REML = FALSE for AIC comparison
-  mod <- lmer(formula, data = traits, REML = FALSE)
-  
-  # Get model predictions
-  traits$predicted <- predict(mod)
-  
-  # Create ggplot for the untransformed trait with log10-scaled axes
-  p <- ggplot(traits, aes(x = treatment_mmol, y = !!sym(trait), color = species)) +
-    geom_point(aes(alpha = 0.5, shape = species), size = 2) +
-    geom_line(aes(y = predicted), linewidth = 1) +  # Model predictions
-    scale_y_log10() +  # Log10 scale for y-axis
-    #scale_x_continuous(trans = "log10") +  # Log10 scale for x-axis (if needed)
-    labs(
-      x = label_units[["treatment_mmol"]],  # Nitrogen in mM
-      y = label_units[[trait]],  # Use formatted LaTeX labels for the trait
-      color = "Species",
-      shape = "Species"
-    ) +
-    scale_color_manual(values = josef_colors) +
-    custom_theme +
-    guides(
-      alpha = "none",  # Remove alpha from the legend
-      color = guide_legend(override.aes = list(alpha = 1, size = 4)),
-      shape = guide_legend(override.aes = list(alpha = 1, size = 4))
-    )
-  
-  # Store plots
-  plots[[trait]] <- p
-}
+# Fit mixed-effects models with appropriate structure
+mod_LMA <- lm(LMA ~ treatment_mmol, data = traits)
+mod_LDMC <- lmer(LDMC ~ treatment_mmol + (1 | species), data = traits, REML = FALSE)
+mod_CHL <- lm(CHL ~ treatment_mmol, data = traits)  # No random effect for CHL
 
-# Arrange all plots in a grid with a common legend at the bottom
-final_plot <- ggarrange(
-  plotlist = plots,
-  labels = c("a", "b", "c"),
-  nrow = 1,
-  ncol = 3,
-  common.legend = TRUE,
-  legend = "bottom"  # Position the legend at the bottom
-)
+# Get predictions
+traits$predicted_LMA <- predict(mod_LMA)
+traits$predicted_LDMC <- predict(mod_LDMC)
+traits$predicted_CHL <- predict(mod_CHL)
+
+# Define individual plots
+
+# LMA: Single trend line, no species differentiation
+p_LMA <- ggplot(traits, aes(x = treatment_mmol, y = LMA)) +
+  geom_point(aes(color = species, alpha = 0.5, shape = species), size = 2) +
+  geom_line(aes(y = predicted_LMA), linewidth = 1, color = "#666666") +  # One trend line
+  scale_y_log10() +
+  labs(x = label_units[["treatment_mmol"]], y = label_units[["LMA"]], color = "Species", shape = "Species") +
+  scale_color_manual(values = josef_colors) +
+  custom_theme +
+  guides(alpha = "none", color = guide_legend(override.aes = list(alpha = 1, size = 4)), 
+         shape = guide_legend(override.aes = list(alpha = 1, size = 4)))
+
+# LDMC: Separate intercepts for species
+p_LDMC <- ggplot(traits, aes(x = treatment_mmol, y = LDMC, color = species)) +
+  geom_point(aes(alpha = 0.5, shape = species), size = 2) +
+  geom_line(aes(y = predicted_LDMC), linewidth = 1) +  # Separate intercepts
+  scale_y_log10() +
+  labs(x = label_units[["treatment_mmol"]], y = label_units[["LDMC"]], color = "Species", shape = "Species") +
+  scale_color_manual(values = josef_colors) +
+  custom_theme +
+  guides(alpha = "none", color = guide_legend(override.aes = list(alpha = 1, size = 4)), 
+         shape = guide_legend(override.aes = list(alpha = 1, size = 4)))
+
+# CHL: Single trend line, no species differentiation
+p_CHL <- ggplot(traits, aes(x = treatment_mmol, y = CHL)) +
+  geom_point(aes(color = species, alpha = 0.5, shape = species), size = 2) +
+  geom_line(aes(y = predicted_CHL), linewidth = 1, color = "#666666") +  # One trend line
+  scale_y_log10() +
+  labs(x = label_units[["treatment_mmol"]], y = label_units[["CHL"]], color = "Species", shape = "Species") +
+  scale_color_manual(values = josef_colors) +
+  custom_theme +
+  guides(alpha = "none", color = guide_legend(override.aes = list(alpha = 1, size = 4)), 
+         shape = guide_legend(override.aes = list(alpha = 1, size = 4)))
+
+# Arrange all plots in a grid with a common legend
+final_plot <- ggarrange(p_LMA, p_LDMC, p_CHL,
+                        labels = c("a", "b", "c"),
+                        nrow = 1, ncol = 3,
+                        common.legend = TRUE, legend = "bottom")
 
 # Display the final plot
 print(final_plot)
 
+
 ##  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-# Chat GPT4 used for assistance to print p values for mixed effects models
-# across species, R2 values, and p values for simple linear models (lm, separate species)
 
 # Create an empty list to store p-values
 p_values <- list()
@@ -167,7 +173,8 @@ for (trait in traits_of_interest) {
   
   # Determine the transformed trait name and formula
   transformed_trait <- paste0(trait, "_trans")
-  formula <- as.formula(paste(transformed_trait, "~ treatment_mmol + (1 | species)"))
+  formula <- as.formula(paste(transformed_trait,
+                              "~ treatment_mmol + (1 | species)"))
   
   # Fit the mixed-effects model using REML = FALSE for hypothesis testing
   mod <- lmer(formula, data = traits, REML = FALSE)
@@ -181,72 +188,3 @@ for (trait in traits_of_interest) {
 
 # Print p-values to R console
 print(p_values)
-
-##  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
-# Load required packages
-library(lme4)
-library(MuMIn)
-
-# Create empty lists to store R² values
-r2_values <- list()
-
-# Iterate over traits and fit models accordingly
-for (trait in traits_of_interest) {
-  
-  # Determine the transformed trait name and formula
-  transformed_trait <- paste0(trait, "_trans")
-  formula <- as.formula(paste(transformed_trait, "~ treatment_mmol + (1 | species)"))
-  
-  # Fit the mixed-effects model using REML = FALSE for hypothesis testing
-  mod <- lmer(formula, data = traits, REML = FALSE)
-  
-  # Extract R² values using MuMIn package
-  r2_result <- r.squaredGLMM(mod)
-  r2_marginal <- r2_result[1]  # Marginal R² (fixed effects only)
-  r2_conditional <- r2_result[2]  # Conditional R² (fixed + random effects)
-  
-  # Store in list with trait name
-  r2_values[[trait]] <- list(
-    "Marginal R²" = r2_marginal,
-    "Conditional R²" = r2_conditional
-  )
-}
-
-# Print R² values to R console
-print(r2_values)
-
-##  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
-# Create an empty list to store p-values for each species and trait
-species_p_values <- list()
-
-# Iterate over traits
-for (trait in traits_of_interest) {
-  
-  # Subset the data for the current transformed trait
-  transformed_trait <- paste0(trait, "_trans")
-  
-  # Initialize a nested list for the current trait
-  species_p_values[[trait]] <- list()
-  
-  # Iterate over each species
-  for (sp in unique(traits$species)) {
-    
-    # Subset data for the current species
-    species_data <- traits %>% filter(species == sp)
-    
-    # Fit a simple linear model for the current species and trait
-    formula <- as.formula(paste(transformed_trait, "~ treatment_mmol"))
-    lm_model <- lm(formula, data = species_data)
-    
-    # Extract the p-value for the slope (treatment_mmol)
-    p_value <- summary(lm_model)$coefficients["treatment_mmol", "Pr(>|t|)"]
-    
-    # Store the p-value in the nested list
-    species_p_values[[trait]][[as.character(sp)]] <- p_value
-  }
-}
-
-# Print p-values for each species and trait
-print(species_p_values)

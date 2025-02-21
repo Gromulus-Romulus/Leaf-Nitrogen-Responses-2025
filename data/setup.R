@@ -43,10 +43,10 @@ mass_data$species <- factor(mass_data$species, levels = c("radish", "borage", "b
 # Afterwards, merge values for image scans with the dataframe.
 scans <- run.ij(set.directory = './scans/raw', path.imagej = '/Applications/ImageJ.app')
 names(scans) <- c("barcodeID", "area_cm2")
-#mass_data <- merge(mass_data, scans, by = "barcodeID")
+mass_data <- merge(mass_data, scans, by = "barcodeID")
 
 # Allow missing values so that we can do data imputation
-mass_data <- merge(mass_data, scans, by = "barcodeID", all.x = TRUE)
+#mass_data <- merge(mass_data, scans, by = "barcodeID", all.x = TRUE)
 
 # ------------------------------------------------------ #
 # CALCULATION OF LMA + EWT // 
@@ -102,9 +102,9 @@ traits <- traits %>%
                           "radish" = latin.names["radish"])) %>%
   group_by(species)
 
-# Merge with prospect-PRO and fluorometry values - allow NA for missing cells
-traits <- merge(traits, prospect, by = "barcodeID", all.x = T)
-traits <- merge(traits, fluor, by = "barcodeID", all.x = T)
+# Merge with prospect-PRO and fluorometry values
+traits <- merge(traits, prospect, by = "barcodeID", all.x = F)
+traits <- merge(traits, fluor, by = "barcodeID", all.x = F)
 
 # Merge duplicate rows
 traits <- traits %>%
