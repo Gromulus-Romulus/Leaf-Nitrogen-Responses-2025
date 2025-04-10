@@ -131,32 +131,6 @@ lma_ldmc_plot <- ggplot(traits, aes(y = LDMC, x = LMA)) +
     shape = guide_legend("Species", override.aes = list(size = 4))
   ) + custom_theme
 
-## LDMC vs CHL----
-ldmc_chl_sma <- smatr::sma(LDMC ~ CHL * species, log = "XY",
-                           method = "SMA",
-                           data = traits)
-
-ldmc_chl_plot <- ggplot(traits, aes(y = LDMC, x = CHL)) +
-  geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +  # Adjusted point size and opacity
-  #stat_ma_line(aes(color = species), method = "SMA", se=F) +  # SMA regression line
-  scale_color_manual(values = josef_colors, name = "Species") +
-  scale_shape_manual(values = c(16, 17, 18), name = "Species") +
-  scale_y_log10() +  # Log scale for Y-axis
-  scale_x_log10() +  # Log scale for X-axis
-  labs(x = label_units[["CHL"]], y = label_units[["LDMC"]]) +
-  theme_classic() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
-    axis.text.x = element_text(size = 12),
-    axis.text.y = element_text(size = 12),
-    aspect.ratio = 1,
-    legend.position = "bottom"  # Legend position at the bottom
-  ) +
-  guides(
-    color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
-    shape = guide_legend("Species", override.aes = list(size = 4))
-  ) + custom_theme
 
 ## LMA vs CHL----
 lma_chl_sma <- smatr::sma(LMA ~ CHL * species, log = "XY",
@@ -165,7 +139,8 @@ lma_chl_sma <- smatr::sma(LMA ~ CHL * species, log = "XY",
 
 lma_chl_plot <- ggplot(traits, aes(y = LMA, x = CHL)) +
   geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +  # Adjusted point size and opacity
-  #stat_ma_line(aes(color = species), method = "SMA", se=F) +  # SMA regression line
+  stat_ma_line(data = subset(traits, species == "R. sativus"), 
+               method = "SMA", se = F, color = josef_colors["R. sativus"], linetype = "solid") +
   scale_color_manual(values = josef_colors, name = "Species") +
   scale_shape_manual(values = c(16, 17, 18), name = "Species") +
   scale_y_log10() +  # Log scale for Y-axis
@@ -185,18 +160,53 @@ lma_chl_plot <- ggplot(traits, aes(y = LMA, x = CHL)) +
     shape = guide_legend("Species", override.aes = list(size = 4))
   ) + custom_theme
 
+## LDMC vs CHL----
+ldmc_chl_sma <- smatr::sma(LDMC ~ CHL * species, log = "XY",
+                           method = "SMA",
+                           data = traits)
+
+ldmc_chl_plot <- ggplot(traits, aes(y = LDMC, x = CHL)) +
+  geom_point(size = 2, alpha = 0.5, aes(color = species, shape = species)) +  # Adjusted point size and opacity
+  stat_ma_line(data = subset(traits, species == "R. sativus"), 
+               method = "SMA", se = F, color = josef_colors["R. sativus"], linetype = "dashed") +  # SMA regression line for R. sativus
+  scale_color_manual(values = josef_colors, name = "Species") +
+  scale_shape_manual(values = c(16, 17, 18), name = "Species") +
+  scale_y_log10() +  # Log scale for Y-axis
+  scale_x_log10() +  # Log scale for X-axis
+  labs(x = label_units[["CHL"]], y = label_units[["LDMC"]]) +
+  theme_classic() +
+  theme(
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    axis.text.x = element_text(size = 12),
+    axis.text.y = element_text(size = 12),
+    aspect.ratio = 1,
+    legend.position = "bottom"  # Legend position at the bottom
+  ) +
+  guides(
+    color = guide_legend("Species", override.aes = list(shape = c(16, 17, 18), alpha=1.0, size = 4)),  # Bigger shapes
+    shape = guide_legend("Species", override.aes = list(size = 4))
+  ) + custom_theme
+
 # # Apply ggarrange and save as figure 3.
 # # Combine all plots
 figure3_regression_plot <- ggarrange(
-  lma_ldmc_plot, ldmc_chl_plot, lma_chl_plot,
-#   leaf_area_lma_plot, leaf_area_ldmc_plot, leaf_area_chl_plot,
+  lma_ldmc_plot, lma_chl_plot, ldmc_chl_plot,
+  #   leaf_area_lma_plot, leaf_area_ldmc_plot, leaf_area_chl_plot,
   ncol = 3, nrow = 1,  # 2 rows, 3 columns
   labels = c("a", "b", "c"), #"d", "e", "f"),  # Subplot labels
   common.legend = TRUE,  # Combine legends
   legend = "bottom"  # Legend at the bottom
 )
 
-print(figure3_regression_plot)
+# Save as png
+ggsave("figure3_trait_correlations.png", figure3_regression_plot, 
+       width = 8.5, height = 3.75, dpi = 300, bg="white")
+
+# Save as svg
+library(svglite)
+ggsave("figure3_trait_correlations.svg", figure3_regression_plot,
+       width = 8.5, height = 3.75, bg="white")
 
 # # Print to console
 # print(figure3_regression_plot)
@@ -208,9 +218,7 @@ ggsave(
   width = 10, height = 5  # Adjust width and height for layout
 )
 
-# ------
 # Fit models with species factor and compare regression model stats
-# ------
 summary(lma_ldmc_sma)
-summary(ldmc_chl_sma)
 summary(lma_chl_sma)
+summary(ldmc_chl_sma)

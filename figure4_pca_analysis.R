@@ -105,15 +105,43 @@ pca_plot_species <- fviz_pca_biplot(
 print(pca_plot_species)
 
 ## Ordination groups by treatment ----
-# PCA Biplot creation
+# Define custom colors for specific nitrogen levels
+custom_colors1 <- c(
+  "0"  = "#D2B48C",  # Darker beige
+  "5"  = "#E6A96B",  # Light brownish-orange
+  "10" = "#FDBE85",  # Soft orange
+  "15" = "#FDAE61",  # Bright orange
+  "20" = "#F46D43",  # Deep orange
+  "25" = "#E31A1C",  # Red
+  "30" = "#BD0026",  # Dark red
+  "35" = "#800026"   # Deep maroon
+)
+
+# Highlight key treatments using custom colors for specific nitrogen levels
+custom_colors2 <- c(
+  "0"  = "#FDBE85",  # Darker beige
+  "5"  = "grey",  # Light brownish-orange
+  "10" = "grey",  # Soft orange
+  "15" = "#FDAE61",  # Bright orange
+  "20" = "grey",  # Deep orange
+  "25" = "grey",  # Red
+  "30" = "#BD0026",  # Dark red
+  "35" = "grey"   # Deep maroon
+)
+
+
+# Define distinct shapes (must match the number of nitrogen levels)
+custom_shapes <- c(16, 17, 15, 3, 8, 10, 7, 4)  # 8 values
+
 pca_plot_treatment_ellipse <- fviz_pca_biplot(
   pca,
   geom.ind = "point",  # Plot individuals as points
-  col.ind = pca_data$treatment_mmol,  # Color individuals by treatment
+  col.ind = factor(pca_data$treatment_mmol),  # Ensure discrete coloring
+  shape.ind = factor(pca_data$treatment_mmol),  # Ensure discrete shapes
   addEllipses = TRUE,  # Add confidence ellipses for each group
   ellipse.level = 0.95,  # Set confidence level for ellipses
   ellipse.alpha = 0.0,  # Set fill transparency to 0 for ellipses
-  legend.title = "Treatment (mM)",  # Legend title
+  legend.title = "Nitrogen addition (mM)",  # Legend title
   repel = TRUE  # Avoid overlap of labels
 ) +
   labs(
@@ -122,7 +150,8 @@ pca_plot_treatment_ellipse <- fviz_pca_biplot(
     y = paste0("PC2 (", explained_variation[2], "% variance)")
   ) +
   custom_theme +
-  scale_color_brewer(palette = "OrRd") +
+  scale_color_manual(values = custom_colors2) +  # Assign custom colors
+  scale_shape_manual(values = custom_shapes) +  # Assign distinct shapes
   theme(
     legend.position = "bottom",
     aspect.ratio = 1
@@ -131,10 +160,12 @@ pca_plot_treatment_ellipse <- fviz_pca_biplot(
 pca_plot_treatment_no_ellipse <- fviz_pca_biplot(
   pca,
   geom.ind = "point",  # Plot individuals as points
-  col.ind = pca_data$treatment_mmol,  # Color individuals by species
-  addEllipses = FALSE,  # Add confidence ellipses for each group
+  col.ind = factor(pca_data$treatment_mmol),  # Ensure discrete coloring
+  shape.ind = factor(pca_data$treatment_mmol),  # Ensure discrete shapes
+  addEllipses = FALSE,  # No confidence ellipses for each group
   ellipse.level = 0.95,  # Set confidence level for ellipses
-  legend.title = "Treatment (mM)",  # Legend title
+  ellipse.alpha = 0.0,  # Set fill transparency to 0 for ellipses
+  legend.title = "Nitrogen addition (mM)",  # Legend title
   repel = TRUE  # Avoid overlap of labels
 ) +
   labs(
@@ -143,7 +174,8 @@ pca_plot_treatment_no_ellipse <- fviz_pca_biplot(
     y = paste0("PC2 (", explained_variation[2], "% variance)")
   ) +
   custom_theme +
-  scale_color_brewer(palette = "OrRd") +
+  scale_color_manual(values = custom_colors1) +  # Assign custom colors
+  scale_shape_manual(values = custom_shapes) +  # Assign distinct shapes
   theme(
     legend.position = "bottom",
     aspect.ratio = 1
@@ -183,8 +215,10 @@ pca_eigenplot <- fviz_eig(pca, addlabels = TRUE, geom = c("line", "point")) +
 pca_plot_treatment <- ggarrange(
   pca_plot_treatment_ellipse,
   pca_plot_treatment_no_ellipse,
-  nrow = 1, labels = c("a", "b")
+  nrow = 1, labels = c("", "")
 )
+
+print(pca_plot_treatment)
 
 print(pca_eigenplot)
 
@@ -196,6 +230,11 @@ ggsave(
   width = 10, height = 5,
   bg = "white"
 )
+
+# Save as svg
+library(svglite)
+ggsave("treatment_pca_plot.svg", pca_plot_treatment,
+       width = 16, height = 6, bg="white")
 
 # Save scree plot
 ggsave(

@@ -103,7 +103,7 @@ traits <- traits %>%
      CHL_trans = I(CHL)
 )
 
-# Load necessary libraries
+# Load required libraries
 library(lme4)
 library(ggplot2)
 library(ggpubr)
@@ -111,19 +111,47 @@ library(ggpubr)
 # Fit mixed-effects models with appropriate structure
 mod_LMA <- lm(LMA ~ treatment_mmol, data = traits)
 mod_LDMC <- lmer(LDMC ~ treatment_mmol + (1 | species), data = traits, REML = FALSE)
-mod_CHL <- lm(CHL ~ treatment_mmol, data = traits)  # No random effect for CHL
+mod_CHL <- lm(CHL ~ treatment_mmol, data = traits)
 
-# Get predictions
-traits$predicted_LMA <- predict(mod_LMA)
-traits$predicted_LDMC <- predict(mod_LDMC)
-traits$predicted_CHL <- predict(mod_CHL)
+# Get predictions with standard errors
+pred_LMA <- predict(mod_LMA, se.fit = TRUE)
+pred_LDMC <- predict(mod_LDMC, se.fit = TRUE)
+pred_CHL <- predict(mod_CHL, se.fit = TRUE)
+
+# Compute 95% Confidence Intervals
+traits$predicted_LMA <- pred_LMA$fit
+traits$LMA_lower_CI <- pred_LMA$fit - 1.96 * pred_LMA$se.fit
+traits$LMA_upper_CI <- pred_LMA$fit + 1.96 * pred_LMA$se.fit
+
+traits$predicted_LDMC <- pred_LDMC$fit
+traits$LDMC_lower_CI <- pred_LDMC$fit - 1.96 * pred_LDMC$se.fit
+traits$LDMC_upper_CI <- pred_LDMC$fit + 1.96 * pred_LDMC$se.fit
+
+traits$predicted_CHL <- pred_CHL$fit
+traits$CHL_lower_CI <- pred_CHL$fit - 1.96 * pred_CHL$se.fit
+traits$CHL_upper_CI <- pred_CHL$fit + 1.96 * pred_CHL$se.fit
+
+# Compute 95% Prediction Intervals (Optional)
+sigma_LMA <- sigma(mod_LMA)  # Residual SD
+traits$LMA_lower_PI <- pred_LMA$fit - 1.96 * sqrt(pred_LMA$se.fit^2 + sigma_LMA^2)
+traits$LMA_upper_PI <- pred_LMA$fit + 1.96 * sqrt(pred_LMA$se.fit^2 + sigma_LMA^2)
+
+sigma_LDMC <- sigma(mod_LDMC)
+traits$LDMC_lower_PI <- pred_LDMC$fit - 1.96 * sqrt(pred_LDMC$se.fit^2 + sigma_LDMC^2)
+traits$LDMC_upper_PI <- pred_LDMC$fit + 1.96 * sqrt(pred_LDMC$se.fit^2 + sigma_LDMC^2)
+
+sigma_CHL <- sigma(mod_CHL)
+traits$CHL_lower_PI <- pred_CHL$fit - 1.96 * sqrt(pred_CHL$se.fit^2 + sigma_CHL^2)
+traits$CHL_upper_PI <- pred_CHL$fit + 1.96 * sqrt(pred_CHL$se.fit^2 + sigma_CHL^2)
 
 # Define individual plots
 
-# LMA: Single trend line, no species differentiation
+# LMA: Single trend line with CI and PI
 p_LMA <- ggplot(traits, aes(x = treatment_mmol, y = LMA)) +
   geom_point(aes(color = species, alpha = 0.5, shape = species), size = 2) +
-  geom_line(aes(y = predicted_LMA), linewidth = 1, color = "#666666") +  # One trend line
+  #geom_ribbon(aes(ymin = LMA_lower_CI, ymax = LMA_upper_CI), fill = "#999999", alpha = 0.2) +  # 95% CI
+  #geom_ribbon(aes(ymin = LMA_lower_PI, ymax = LMA_upper_PI), fill = "#CCCCCC", alpha = 0.2) +  # 95% PI
+  geom_line(aes(y = predicted_LMA), linewidth = 1, color = "#666666") +  # Trend line
   scale_y_log10() +
   labs(x = label_units[["treatment_mmol"]], y = label_units[["LMA"]], color = "Species", shape = "Species") +
   scale_color_manual(values = josef_colors) +
@@ -131,21 +159,26 @@ p_LMA <- ggplot(traits, aes(x = treatment_mmol, y = LMA)) +
   guides(alpha = "none", color = guide_legend(override.aes = list(alpha = 1, size = 4)), 
          shape = guide_legend(override.aes = list(alpha = 1, size = 4)))
 
-# LDMC: Separate intercepts for species
+# LDMC: Separate intercepts per species with CI and PI
 p_LDMC <- ggplot(traits, aes(x = treatment_mmol, y = LDMC, color = species)) +
   geom_point(aes(alpha = 0.5, shape = species), size = 2) +
-  geom_line(aes(y = predicted_LDMC), linewidth = 1) +  # Separate intercepts
+  #geom_ribbon(aes(ymin = LDMC_lower_CI, ymax = LDMC_upper_CI, fill = "#999999"), alpha = 0.2) +  # 95% CI
+  #geom_ribbon(aes(ymin = LDMC_lower_PI, ymax = LDMC_upper_PI, fill = species), alpha = 0.2) +  # 95% PI
+  geom_line(aes(y = predicted_LDMC), linewidth = 1) +  # Trend lines per species
   scale_y_log10() +
   labs(x = label_units[["treatment_mmol"]], y = label_units[["LDMC"]], color = "Species", shape = "Species") +
   scale_color_manual(values = josef_colors) +
+  scale_fill_manual(values = josef_colors) +  # Fill matches species colors
   custom_theme +
   guides(alpha = "none", color = guide_legend(override.aes = list(alpha = 1, size = 4)), 
          shape = guide_legend(override.aes = list(alpha = 1, size = 4)))
 
-# CHL: Single trend line, no species differentiation
+# CHL: Single trend line with CI and PI
 p_CHL <- ggplot(traits, aes(x = treatment_mmol, y = CHL)) +
   geom_point(aes(color = species, alpha = 0.5, shape = species), size = 2) +
-  geom_line(aes(y = predicted_CHL), linewidth = 1, color = "#666666") +  # One trend line
+  #geom_ribbon(aes(ymin = CHL_lower_CI, ymax = CHL_upper_CI), fill = "#999999", alpha = 0.2) +  # 95% CI
+  #geom_ribbon(aes(ymin = CHL_lower_PI, ymax = CHL_upper_PI), fill = "#CCCCCC", alpha = 0.2) +  # 95% PI
+  geom_line(aes(y = predicted_CHL), linewidth = 1, color = "#666666") +  # Trend line
   scale_y_log10() +
   labs(x = label_units[["treatment_mmol"]], y = label_units[["CHL"]], color = "Species", shape = "Species") +
   scale_color_manual(values = josef_colors) +
@@ -162,11 +195,20 @@ final_plot <- ggarrange(p_LMA, p_LDMC, p_CHL,
 # Display the final plot
 print(final_plot)
 
+# Save as png
+ggsave("figure2_nitrogen_response.png", final_plot,
+       width = 8.5, height = 3.75, dpi = 300, bg="white")
+
+# Save as svg
+library(svglite)
+ggsave("figure2_nitrogen_response.svg", final_plot,
+       width = 8.5, height = 3.75, bg="white")
 
 ##  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 # Create an empty list to store p-values
 p_values <- list()
+r2_values <- list()
 
 # Iterate over traits and fit models accordingly
 for (trait in traits_of_interest) {
@@ -181,9 +223,12 @@ for (trait in traits_of_interest) {
   
   # Extract p-value for treatment effect
   p_value <- anova(mod)$`Pr(>F)`[1]
+  # Extract R-squared value
+  r2_value <- r.squaredGLMM(mod)[1]
   
   # Store in the list with trait name
   p_values[[trait]] <- p_value
+  r2_values[[trait]] <- r2_value
 }
 
 # Print p-values to R console
